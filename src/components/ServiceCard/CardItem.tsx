@@ -1,9 +1,9 @@
 import cdot from '../../assets/images/CDOT.png';
 import met from '../../assets/images/MET.png';
 import pat from '../../assets/images/PAT.png';
-import smt from '../../assets/images/CDOT.png';
-import srit from '../../assets/images/CDOT.png';
-import stakemt from '../../assets/images/CDOT.png';
+import smt from '../../assets/images/SMT.png';
+import srit from '../../assets/images/SRIT.png';
+import stakemt from '../../assets/images/STAKEHOLDERMT.png';
 
 export const ServiceCardContent = [
   {
