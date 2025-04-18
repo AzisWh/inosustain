@@ -11,3 +11,11 @@
   font-family: 'DmSans';
   src: local('DMSans'), url('./assets/font/DMSans.ttf');
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

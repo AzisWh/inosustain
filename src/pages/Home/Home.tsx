@@ -1,6 +1,7 @@
 import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
 import Hero from './section/Hero';
 import ServiceHome from './section/ServiceHome';
+import { Slider } from '../../components/Slider/Slider';
 
 const Home = () => {
   return (
@@ -19,10 +20,10 @@ const Home = () => {
         </div>
         <ServiceHome />
       </div>
-      <div className="mt-10 md:mt-0 md:p-[80px] pt-10000">
-        <h1 className="text-center" id="jajal">
-          ehehenak
-        </h1>
+      <div className="mt-10 md:mt-0 md:p-[80px]">
+        <div className="py-5">
+          <Slider />
+        </div>
       </div>
     </div>
   );
