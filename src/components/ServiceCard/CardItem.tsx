@@ -37,7 +37,7 @@ export const ServiceCardContent = [
     desc: 'Pendampingan PROPER',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Community Development Officer',
     image: cdot,
     desc: 'Pengadaan CDO',

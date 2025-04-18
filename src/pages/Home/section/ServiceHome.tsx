@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ServiceCard from '../../../components/ServiceCard/ServiceCard';
 import { ServiceCardContent } from '../../../components/ServiceCard/CardItem';
 import { Button } from '../../../components/Button/Button';
@@ -6,12 +6,19 @@ import { Button } from '../../../components/Button/Button';
 const ServiceHome = () => {
   const [expanded, setExpanded] = useState(false);
   const visibleCount = expanded ? ServiceCardContent.length : 3;
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (expanded && containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [expanded]);
+
   return (
-    <section className="relative px-4">
+    <section className="relative px-4 pb-10">
       <div
-        className={`transition-all duration-700 ease-in-out overflow-hidden ${
-          expanded ? 'max-h-[2000px]' : 'max-h-[600px]'
-        }`}>
+        ref={containerRef}
+        className={`transition-all duration-700 ease-in-out `}>
         <div className="grid gap-6 md:grid-cols-3">
           {ServiceCardContent.slice(0, visibleCount).map((content) => (
             <ServiceCard
