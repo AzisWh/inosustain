@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+@font-face {
+  font-family: 'Arlonbold';
+  src: local('Net-Arlon-Bold'), url('./assets/font/Net-Arlon-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'DmSans';
+  src: local('DMSans'), url('./assets/font/DMSans.ttf');
+}
