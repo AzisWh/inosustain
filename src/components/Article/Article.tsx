@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from 'flowbite-react';
 import { Button } from '../Button/Button';
 
@@ -9,6 +9,8 @@ export interface ArticleItem {
 }
 
 const Article: React.FC<ArticleItem> = ({ image, title, descrip }) => {
+  const shortDesc =
+    descrip.length > 100 ? descrip.slice(0, 100) + '...' : descrip;
   return (
     <Card className="!w-full !bg-white !shadow-xl !border-0 !mb-5 h-full flex flex-col items-center justify-between">
       <div className="text-center">
@@ -22,11 +24,7 @@ const Article: React.FC<ArticleItem> = ({ image, title, descrip }) => {
           style={{ fontFamily: 'DMSans' }}>
           {title}
         </h5>
-        <p
-          className="font-normal text-gray-700"
-          style={{ fontFamily: 'DMSans' }}>
-          {descrip}
-        </p>
+        <p className="text-gray-600 text-sm mt-2 flex-grow">{shortDesc}</p>
       </div>
       <div className="flex items-center justify-center">
         <Button
