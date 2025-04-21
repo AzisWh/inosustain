@@ -4,7 +4,7 @@ const VisiMisi = () => {
       className="flex flex-col items-center justify-center px-4 md:px-16 bg-white"
       style={{ fontFamily: 'DMSans' }}>
       <div className="Visi flex flex-col md:flex-row w-full md:space-x-8 space-y-6 md:space-y-0 max-w-4xl">
-        <div className="flex-1 bg-white rounded-xl shadow-lg p-6">
+        <div className="flex-1 bg-white rounded-xl shadow-xl p-6">
           <h3 className="text-[20px] md:text-[40px] font-extrabold text-[#0D4883] mb-4 text-center underline underline-offset-8 ">
             Visi
           </h3>
@@ -14,7 +14,7 @@ const VisiMisi = () => {
             terhadap lingkungan dan kesejahteraan masyarakat.
           </p>
         </div>
-        <div className="Misi flex-1 bg-white rounded-xl shadow-lg p-6">
+        <div className="Misi flex-1 bg-white rounded-xl shadow-xl p-6">
           <h3 className="text-[20px] md:text-[40px] font-extrabold text-[#0D4883] mb-4 text-center underline underline-offset-8">
             Misi
           </h3>

@@ -1,6 +1,8 @@
 import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
 import HeroAbout from './section/HeroAbout';
 import VisiMisi from './section/VisiMisi';
+import CoreValue from './section/CoreValue';
+import { FooterComponent } from '../../components/Footer/FooterComponents';
 
 const About = () => {
   return (
@@ -20,6 +22,19 @@ const About = () => {
           </h1>
           <VisiMisi />
         </div>
+      </div>
+      <div className="relative pt-5">
+        <div className="flex flex-col">
+          <h1
+            className="md:text-[60px] text-[40px] font-semibold md:py-5 text-[#0D4883] text-center"
+            style={{ fontFamily: 'Arlonbold' }}>
+            Core Value
+          </h1>
+          <CoreValue />
+        </div>
+      </div>
+      <div className="mt-10 md:mt-0 p-5 md:p-[40px]">
+        <FooterComponent />
       </div>
     </div>
   );
