@@ -41,7 +41,7 @@ export const NavbarComponents = () => {
         className={`!bg-white !fixed !w-full !z-50 !start-0 !top-0 !transition-shadow duration-300 ${
           scroll ? '!shadow-xl' : ''
         }`}
-        style={{ fontFamily: 'Arlonbold' }}>
+        style={{ fontFamily: 'DMSans' }}>
         <NavbarBrand href="/">
           <img src={Logo} className="h-10 md:h-[67px]" alt="Inosustain Logo" />
         </NavbarBrand>
