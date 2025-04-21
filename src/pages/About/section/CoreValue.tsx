@@ -41,9 +41,6 @@ const CoreValue = () => {
     <section
       className="px-4 md:px-16 py-12 bg-white"
       style={{ fontFamily: 'DMSans' }}>
-      <h2 className="text-2xl md:text-3xl font-bold text-[#0D4883] text-center mb-10">
-        Core Value
-      </h2>
       <div className="space-y-8 max-w-3xl mx-auto">
         {coreValues.map((item, index) => (
           <div
