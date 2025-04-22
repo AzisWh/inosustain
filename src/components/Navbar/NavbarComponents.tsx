@@ -41,7 +41,7 @@ export const NavbarComponents = () => {
         className={`!bg-white !fixed !w-full !z-50 !start-0 !top-0 !transition-shadow duration-300 ${
           scroll ? '!shadow-xl' : ''
         }`}
-        style={{ fontFamily: 'DMSans' }}>
+        style={{ fontFamily: 'PoppinsRegular' }}>
         <NavbarBrand href="/">
           <img src={Logo} className="h-10 md:h-[67px]" alt="Inosustain Logo" />
         </NavbarBrand>
@@ -62,7 +62,8 @@ export const NavbarComponents = () => {
 
           <Button
             className=" !bg-[#0D4883] !w-full !text-white !rounded-xl !px-5 !text-sm !font-bold hover:!bg-[#083766]"
-            pill>
+            pill
+            style={{ fontFamily: 'PoppinsRegular' }}>
             Sign In
           </Button>
         </NavbarCollapse>

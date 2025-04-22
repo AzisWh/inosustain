@@ -20,7 +20,7 @@ const HeroAbout = () => {
         </h1>
         <p
           className="text-lg text-white text-[15px] md:text-[20px] "
-          style={{ fontFamily: 'MDSans' }}>
+          style={{ fontFamily: 'PoppinsRegular' }}>
           <span className="font-extrabold">Inosustain</span>{' '}
           <span className="font-extralight">
             bercita-cita untuk menjadi mitra terpercaya dalam menciptakan solusi

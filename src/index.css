@@ -8,9 +8,30 @@
 }
 
 @font-face {
+  font-family: 'PoppinsRegular';
+  src: local('poppins/Poppins-Regular'), url('./assets/font/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsBold';
+  src: local('poppins/Poppins-Bold'), url('./assets/font/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsLight';
+  src: local('poppins/Poppins-Light'), url('./assets/font/poppins/Poppins-Light.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsExtrbold';
+  src: local('poppins/Poppins-Extrbold'), url('./assets/font/poppins/Poppins-ExtrBold.ttf');
+}
+
+@font-face {
   font-family: 'DmSans';
   src: local('DMSans'), url('./assets/font/DMSans.ttf');
 }
+
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
