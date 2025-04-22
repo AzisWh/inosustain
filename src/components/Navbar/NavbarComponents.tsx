@@ -56,7 +56,7 @@ export const NavbarComponents = () => {
           <NavbarLink href="/services" className={navItemStyle('/services')}>
             Services
           </NavbarLink>
-          <NavbarLink href="/contact" className={navItemStyle('/contact')}>
+          <NavbarLink href="/contactus" className={navItemStyle('/contactus')}>
             Contact
           </NavbarLink>
 
