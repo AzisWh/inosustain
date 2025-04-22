@@ -1,6 +1,6 @@
 import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
 import { FooterComponent } from '../../components/Footer/FooterComponents';
-import ServiceHome from '../Home/section/ServiceHome';
+import ServiceSection from './Section/ServiceSection';
 
 const Services = () => {
   return (
@@ -14,7 +14,7 @@ const Services = () => {
             Services
           </h1>
         </div>
-        <ServiceHome />
+        <ServiceSection />
       </div>
       <div className="mt-10 md:mt-0 p-5 md:p-[40px]">
         <FooterComponent />
