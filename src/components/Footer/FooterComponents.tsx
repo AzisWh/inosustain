@@ -24,7 +24,7 @@ export function FooterComponent() {
             </h1>
             <p
               className="text-[16px] text-white font-extralight"
-              style={{ fontFamily: 'MDSans' }}>
+              style={{ fontFamily: 'PoppinsRegular' }}>
               Our vision is to provide convenience and help increase your sales
               business.
             </p>
