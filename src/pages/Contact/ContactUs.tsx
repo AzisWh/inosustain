@@ -9,7 +9,7 @@ const ContactUs = () => {
       <div className="relative pt-10 mt-10">
         <HeroSection />
       </div>
-      <div className="mt-10 md:mt-64 p-5 md:p-[40px]">
+      <div className="mt-10 p-5 ">
         <FooterComponent />
       </div>
     </div>
