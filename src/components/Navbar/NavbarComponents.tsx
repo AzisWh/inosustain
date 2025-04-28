@@ -81,6 +81,8 @@ export const NavbarComponents = () => {
               </span>
             </DropdownHeader>
 
+            <DropdownDivider />
+
             <DropdownItem
               as={Link}
               to="/test"
@@ -99,10 +101,6 @@ export const NavbarComponents = () => {
               className={dropdownItemStyle('/projects/earnings')}>
               Earnings
             </DropdownItem>
-
-            <DropdownDivider />
-
-            <DropdownItem className="!text-[#0D4883]">Sign out</DropdownItem>
           </Dropdown>
 
           <Link to="/contactus" className={navItemStyle('/contactus')}>
@@ -113,7 +111,7 @@ export const NavbarComponents = () => {
             className="!bg-[#0D4883] !w-full !text-white !rounded-xl !px-5 !text-sm !font-bold hover:!bg-[#083766]"
             pill
             style={{ fontFamily: 'PoppinsRegular' }}>
-            Sign In
+            <Link to="/login">Sign In</Link>
           </Button>
         </NavbarCollapse>
       </Navbar>
