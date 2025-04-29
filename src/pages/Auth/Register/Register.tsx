@@ -60,14 +60,14 @@ const Register = () => {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
+          className="bg-[#0D4883] text-white py-2 rounded-md hover:bg-[#0D4883] transition">
           Create Account
         </button>
       </form>
 
       <p className="text-sm mt-4">
         Already have an account?{' '}
-        <a href="/login" className="text-blue-600 hover:underline">
+        <a href="/login" className="text-[#0D4883] hover:underline">
           Sign in
         </a>
       </p>

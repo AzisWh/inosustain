@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Logo from '../../assets/images/logo.svg';
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -17,7 +18,7 @@ export const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
         </div>
       </div>
 
-      <div className="hidden md:flex w-1/2 bg-blue-600 text-white flex-col justify-center items-center p-10">
+      <div className="hidden md:flex w-1/2 bg-[#0D4883] text-white flex-col justify-center items-center p-10">
         <h1 className="text-4xl font-bold leading-tight mb-4">
           Explore the world’s leading design portfolios.
         </h1>
