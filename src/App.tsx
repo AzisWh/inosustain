@@ -1,5 +1,4 @@
 import './App.css';
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LoadingWrapper from './components/Loading/LoadingWrapper';
 import Home from './pages/Home/Home';
@@ -12,11 +11,13 @@ import Login from './pages/Auth/Login/Login';
 import Roledua from './pages/testauth/Roledua';
 import Rolesatu from './pages/testauth/Rolesatu';
 import PrivateRoute from './PrivateRoute';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div>
       <LoadingWrapper>
+        <Toaster position="top-right" />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

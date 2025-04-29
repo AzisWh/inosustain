@@ -21,9 +21,10 @@ const Login: React.FC = () => {
       toast.success('Login successful!');
 
       if (response.user.role_type === 1) {
-        // navigate('/role-satu');
+        navigate('/');
         console.log(response.user);
       } else if (response.user.role_type === 0) {
+        navigate('/roledua');
         console.log(response.user);
       } else {
         toast.error('Unknown role');
@@ -37,31 +38,6 @@ const Login: React.FC = () => {
 
   return (
     <AuthLayout title="Welcome back">
-      <div className="flex flex-col gap-4">
-        <button className="flex items-center justify-center border rounded-md p-2 w-full">
-          <img
-            src="https://www.svgrepo.com/show/475656/google-color.svg"
-            className="w-5 h-5 mr-2"
-            alt="Google"
-          />
-          Sign in with Google
-        </button>
-        <button className="flex items-center justify-center border rounded-md p-2 w-full">
-          <img
-            src="https://www.svgrepo.com/show/475699/apple-color.svg"
-            className="w-5 h-5 mr-2"
-            alt="Apple"
-          />
-          Sign in with Apple
-        </button>
-      </div>
-
-      <div className="flex items-center my-6">
-        <hr className="flex-grow border-gray-300" />
-        <span className="mx-2 text-gray-400">or</span>
-        <hr className="flex-grow border-gray-300" />
-      </div>
-
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div>
           <label className="block mb-1 text-sm">Email</label>

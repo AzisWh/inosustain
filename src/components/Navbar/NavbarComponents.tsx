@@ -13,11 +13,53 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Logo from '../../assets/images/logo.svg';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { AppDispatch } from '../../redux/store';
+import { authService } from '../../api/authServices';
+import { logout } from '../../redux/auth/authSlice';
+import toast from 'react-hot-toast';
+import { UserType } from '../../type/auth';
 
 export const NavbarComponents = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const [scroll, setScroll] = useState(false);
+
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState<UserType | null>(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const token = localStorage.getItem('token');
+
+      if (!token) return;
+
+      try {
+        const response = await authService.getProfile();
+        setUser(response.user);
+      } catch (error) {
+        toast.error('Gagal mengambil profil user');
+        console.error(error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await authService.logout();
+      dispatch(logout());
+      toast.success('Logout berhasil');
+      navigate('/login');
+    } catch (error) {
+      toast.error('Gagal logout. Silakan coba lagi.');
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,12 +116,16 @@ export const NavbarComponents = () => {
               </span>
             )}
             className="!bg-white !border-4 !border-blue-200 !rounded-xl !text-[#0D4883]">
-            <DropdownHeader>
-              <span className="block text-sm text-[#0D4883]">Bonnie Green</span>
-              <span className="block truncate text-sm font-medium text-[#0D4883]">
-                name@flowbite.com
-              </span>
-            </DropdownHeader>
+            {user && (
+              <DropdownHeader>
+                <span className="block text-sm text-[#0D4883]">
+                  {user.nama_depan} {user.nama_belakang}
+                </span>
+                <span className="block truncate text-sm font-medium text-[#0D4883]">
+                  {user.email}
+                </span>
+              </DropdownHeader>
+            )}
 
             <DropdownDivider />
 
@@ -107,12 +153,22 @@ export const NavbarComponents = () => {
             Contact
           </Link>
 
-          <Button
-            className="!bg-[#0D4883] !w-full !text-white !rounded-xl !px-5 !text-sm !font-bold hover:!bg-[#083766]"
-            pill
-            style={{ fontFamily: 'PoppinsRegular' }}>
-            <Link to="/login">Sign In</Link>
-          </Button>
+          {user ? (
+            <Button
+              onClick={handleLogout}
+              className="!bg-red-600 !w-full !text-white !rounded-xl !px-5 !text-sm !font-bold hover:!bg-red-700"
+              pill
+              style={{ fontFamily: 'PoppinsRegular' }}>
+              Logout
+            </Button>
+          ) : (
+            <Button
+              className="!bg-[#0D4883] !w-full !text-white !rounded-xl !px-5 !text-sm !font-bold hover:!bg-[#083766]"
+              pill
+              style={{ fontFamily: 'PoppinsRegular' }}>
+              <Link to="/login">Sign In</Link>
+            </Button>
+          )}
         </NavbarCollapse>
       </Navbar>
     </div>
