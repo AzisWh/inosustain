@@ -54,7 +54,7 @@ export const NavbarComponents = () => {
       await authService.logout();
       dispatch(logout());
       toast.success('Logout berhasil');
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       toast.error('Gagal logout. Silakan coba lagi.');
       console.error(error);
@@ -137,9 +137,9 @@ export const NavbarComponents = () => {
             </DropdownItem>
             <DropdownItem
               as={Link}
-              to="/projects/settings"
-              className={dropdownItemStyle('/projects/settings')}>
-              Settings
+              to="/roledua"
+              className={dropdownItemStyle('/roledua')}>
+              Test role
             </DropdownItem>
             <DropdownItem
               as={Link}

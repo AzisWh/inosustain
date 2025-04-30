@@ -1,7 +1,7 @@
 import { AuthLayout } from '../../../components/AuthLayout/AuthLayout';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '../../../redux/store';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../redux/store';
 import { registerUser } from '../../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
@@ -54,7 +54,7 @@ const Register = () => {
       const response = await dispatch(registerUser(formData)).unwrap();
       toast.success('Registrasi berhasil!');
       navigate('/login');
-      // console.log(response.user);
+      toast.success('User berhasil didaftarkan' + response.user.nama_depan);
     } catch (error: any) {
       if (error?.errors) {
         const firstErrorKey = Object.keys(error.errors)[0];

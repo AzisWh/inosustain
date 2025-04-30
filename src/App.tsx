@@ -32,7 +32,7 @@ function App() {
           {/* tes route */}
           <Route
             path="/roledua"
-            element={<PrivateRoute component={Roledua} requiredRole={0} />}
+            element={<PrivateRoute component={Roledua} requiredRole={1} />}
           />
           <Route
             path="/rolesatu"
