@@ -41,7 +41,7 @@ const Article: React.FC<ArticleItem> = ({
         <p className="text-gray-600 text-sm mt-2 flex-grow">{shortDesc}</p>
       </div>
       <div className="flex items-center justify-center">
-        <Link to={`/DetailArticle/${id}`}>
+        <Link to={`/articleDetail/${id}`}>
           <Button
             text={'More Detail'}
             type="button"

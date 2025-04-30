@@ -12,6 +12,7 @@ import Rolesatu from './pages/testauth/Rolesatu';
 import PrivateRoute from './PrivateRoute';
 import { Toaster } from 'react-hot-toast';
 import AllArticle from './pages/Article/AllArticle';
+import ArticleDetail from './pages/ArticleDetail/ArticleDetail';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/article" element={<AllArticle />} />
+          <Route path="/articleDetail/:id" element={<ArticleDetail />} />
 
           {/* tes route */}
           <Route
