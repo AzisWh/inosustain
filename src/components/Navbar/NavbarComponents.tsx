@@ -131,9 +131,9 @@ export const NavbarComponents = () => {
 
             <DropdownItem
               as={Link}
-              to="/test"
-              className={dropdownItemStyle('/test')}>
-              Dashboard
+              to="/article"
+              className={dropdownItemStyle('/article')}>
+              Article
             </DropdownItem>
             <DropdownItem
               as={Link}

@@ -5,13 +5,13 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Services from './pages/Services/Services';
 import ContactUs from './pages/Contact/ContactUs';
-import Test from './pages/Projects/test';
 import Register from './pages/Auth/Register/Register';
 import Login from './pages/Auth/Login/Login';
 import Roledua from './pages/testauth/Roledua';
 import Rolesatu from './pages/testauth/Rolesatu';
 import PrivateRoute from './PrivateRoute';
 import { Toaster } from 'react-hot-toast';
+import AllArticle from './pages/Article/AllArticle';
 
 function App() {
   return (
@@ -25,9 +25,7 @@ function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          {/*  */}
-          <Route path="/test" element={<Test />} />
+          <Route path="/article" element={<AllArticle />} />
 
           {/* tes route */}
           <Route
