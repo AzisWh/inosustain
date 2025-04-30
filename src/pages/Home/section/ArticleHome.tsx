@@ -14,9 +14,12 @@ const ArticleHome = () => {
           {ArticleItem.slice(0, 3).map((content) => (
             <Article
               key={content.id}
+              id={content.id}
               image={content.image}
               title={content.title}
               descrip={content.descrip}
+              penulis={content.penulis}
+              email={content.email}
             />
           ))}
         </div>
