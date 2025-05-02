@@ -13,6 +13,10 @@ import PrivateRoute from './PrivateRoute';
 import { Toaster } from 'react-hot-toast';
 import AllArticle from './pages/Article/AllArticle';
 import ArticleDetail from './pages/ArticleDetail/ArticleDetail';
+import PostArticle from './pages/Article/PostArticle';
+//
+import TestArtikel from './pages/testauth/TestArtikel';
+import TestDetailArtikel from './pages/testauth/TestDetailArtikel';
 
 function App() {
   return (
@@ -29,7 +33,16 @@ function App() {
           <Route path="/article" element={<AllArticle />} />
           <Route path="/articleDetail/:id" element={<ArticleDetail />} />
 
+          {/* route user */}
+          <Route
+            path="/postArticle"
+            element={<PrivateRoute component={PostArticle} requiredRole={0} />}
+          />
+
           {/* tes route */}
+          <Route path="/allArticle" element={<TestArtikel />} />
+          <Route path="/DetailArticle/:id" element={<TestDetailArtikel />} />
+
           <Route
             path="/roledua"
             element={<PrivateRoute component={Roledua} requiredRole={1} />}

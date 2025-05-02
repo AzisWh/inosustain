@@ -24,7 +24,7 @@ const Login: React.FC = () => {
         navigate('/');
         console.log(response.user);
       } else if (response.user.role_type === 0) {
-        navigate('/roledua');
+        navigate('/');
         console.log(response.user);
       } else {
         toast.error('Unknown role');

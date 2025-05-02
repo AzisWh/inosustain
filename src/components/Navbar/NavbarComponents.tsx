@@ -137,9 +137,9 @@ export const NavbarComponents = () => {
             </DropdownItem>
             <DropdownItem
               as={Link}
-              to="/roledua"
-              className={dropdownItemStyle('/roledua')}>
-              Test role
+              to="/postArticle"
+              className={dropdownItemStyle('/postArticle')}>
+              Publish Artikel
             </DropdownItem>
             <DropdownItem
               as={Link}
