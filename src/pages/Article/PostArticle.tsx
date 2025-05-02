@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
 import { FooterComponent } from '../../components/Footer/FooterComponents';
 import { PostArticlePayload } from '../../type/article';

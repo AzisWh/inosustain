@@ -36,7 +36,7 @@ const TestDetailArtikel = () => {
       <img
         src={
           article.image
-            ? `http://localhost:8000/storage/${article.image}`
+            ? `https://788a-140-213-169-54.ngrok-free.app/api/${article.image}`
             : Image
         }
         alt={article.title}
