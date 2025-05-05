@@ -36,7 +36,7 @@ function App() {
           {/* route user */}
           <Route
             path="/postArticle"
-            element={<PrivateRoute component={PostArticle} requiredRole={0} />}
+            element={<PrivateRoute component={PostArticle} requiredRole={1} />}
           />
 
           {/* tes route */}
@@ -45,11 +45,11 @@ function App() {
 
           <Route
             path="/roledua"
-            element={<PrivateRoute component={Roledua} requiredRole={1} />}
+            element={<PrivateRoute component={Roledua} requiredRole={2} />}
           />
           <Route
             path="/rolesatu"
-            element={<PrivateRoute component={Rolesatu} requiredRole={1} />}
+            element={<PrivateRoute component={Rolesatu} requiredRole={2} />}
           />
         </Routes>
       </LoadingWrapper>

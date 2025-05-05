@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
 import { FooterComponent } from '../../components/Footer/FooterComponents';
 import { PostArticlePayload } from '../../type/article';
 import { articleService } from '../../api/articleServies';
 import { toast } from 'react-hot-toast';
+import { Editor } from '@tinymce/tinymce-react';
 
 const PostArticle = () => {
   const [formData, setFormData] = useState<PostArticlePayload>({
@@ -12,6 +13,7 @@ const PostArticle = () => {
     image: null,
   });
   const [loading, setLoading] = useState(false);
+  const editorRef = useRef<any>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -47,7 +49,7 @@ const PostArticle = () => {
       <div className="relative w-full">
         <NavbarComponents />
       </div>
-      <div className="pt-10 px-6 md:px-20 bg-[#F3F7FA] min-h-screen">
+      <div className="pt-18 md:pt-10 px-6 md:px-20 bg-[#F3F7FA] min-h-screen">
         <h1 className="text-3xl md:text-5xl font-bold text-[#0D4883] text-center mb-8">
           Post Your Article Here
         </h1>

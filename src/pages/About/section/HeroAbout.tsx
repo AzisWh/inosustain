@@ -19,10 +19,10 @@ const HeroAbout = () => {
           Inosustain
         </h1>
         <p
-          className="text-lg text-white text-[15px] md:text-[20px] "
+          className="text-lg text-white text-[15px] md:text-[18px] text-justify"
           style={{ fontFamily: 'PoppinsRegular' }}>
           <span className="font-extrabold">Inosustain</span>{' '}
-          <span className="font-extralight">
+          <span className="font-extralight ">
             bercita-cita untuk menjadi mitra terpercaya dalam menciptakan solusi
             berkelanjutan yang mengintegrasikan pelestarian lingkungan dan
             pemberdayaan masyarakat melalui penciptaan tata kelola dan budaya

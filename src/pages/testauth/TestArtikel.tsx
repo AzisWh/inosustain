@@ -47,9 +47,7 @@ const TestArtikel = () => {
             key={item.id}
             id={item.id}
             image={
-              item.image
-                ? `https://788a-140-213-169-54.ngrok-free.app/api/${item.image}`
-                : Image
+              item.image ? `http://127.0.0.1:8000/storage/${item.image}` : Image
             }
             title={item.title}
             descrip={item.content}

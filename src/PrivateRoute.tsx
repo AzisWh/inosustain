@@ -1,33 +1,38 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from './redux/store';
 import toast from 'react-hot-toast';
+import { RoleType } from './type/auth';
+import { fetchCurrentUser } from './redux/auth/authSlice';
 
 interface PrivateRouteProps {
   component: React.ComponentType<any>;
-  requiredRole: number;
+  requiredRole: RoleType;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({
   component: Component,
   requiredRole,
 }) => {
-  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user, token } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
-    if (!user || user.role_type !== requiredRole) {
-      toast.error(
-        'Silakan login dengan akun terdaftar untuk mengakses halaman ini.'
-      );
-      navigate('/login');
+    if (token && !user) {
+      dispatch(fetchCurrentUser() as any);
     }
-  }, [user, requiredRole, navigate]);
+  }, [token, user, dispatch]);
 
-  if (!user || user.role_type !== requiredRole) {
-    return null;
-  }
+  useEffect(() => {
+    if (!token || !user || user.role_type !== requiredRole) {
+      toast.error('Silakan login dengan akun yang sesuai.');
+      navigate('/login', { replace: true });
+    }
+  }, [token, user, navigate, requiredRole]);
+
+  if (!token || !user || user.role_type !== requiredRole) return null;
 
   return <Component />;
 };

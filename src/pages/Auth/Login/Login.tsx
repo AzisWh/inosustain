@@ -20,10 +20,10 @@ const Login: React.FC = () => {
 
       toast.success('Login successful!');
 
-      if (response.user.role_type === 1) {
+      if (response.user.role_type === 2) {
         navigate('/');
-        console.log(response.user);
-      } else if (response.user.role_type === 0) {
+        // console.log(response.user);
+      } else if (response.user.role_type === 1) {
         navigate('/');
         console.log(response.user);
       } else {

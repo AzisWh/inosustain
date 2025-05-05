@@ -13,13 +13,13 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Logo from '../../assets/images/logo.svg';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../../redux/store';
 import { authService } from '../../api/authServices';
 import { logout } from '../../redux/auth/authSlice';
 import toast from 'react-hot-toast';
-import { UserType } from '../../type/auth';
+import { RootState } from '../../redux/store';
 
 export const NavbarComponents = () => {
   const location = useLocation();
@@ -29,25 +29,7 @@ export const NavbarComponents = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const [user, setUser] = useState<UserType | null>(null);
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const token = localStorage.getItem('token');
-
-      if (!token) return;
-
-      try {
-        const response = await authService.getProfile();
-        setUser(response.user);
-      } catch (error) {
-        toast.error('Gagal mengambil profil user');
-        console.error(error);
-      }
-    };
-
-    fetchProfile();
-  }, []);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   const handleLogout = async () => {
     try {
