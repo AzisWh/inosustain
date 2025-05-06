@@ -35,7 +35,7 @@ const ApiArticle: React.FC<ArticleItem> = ({
           alt="Service Image"
           className="mt-4 w-[342px] h-[256px] object-contain"
         />
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="mt-2 text-sm text-gray-500">
           {penulis} - {email}
         </p>
         <h5
@@ -43,12 +43,12 @@ const ApiArticle: React.FC<ArticleItem> = ({
           style={{ fontFamily: 'DMSans' }}>
           {title}
         </h5>
-        <span className="text-gray-600 text-sm mt-2 flex-grow">
+        <span className="flex-grow mt-2 text-sm text-gray-600">
           {shortDesc}
         </span>
       </div>
       <div className="flex items-center justify-center">
-        <Link to={`/DetailArticle/${id}`}>
+        <Link to={`/articleDetail/${id}`}>
           <Button
             text={'More Detail'}
             type="button"
