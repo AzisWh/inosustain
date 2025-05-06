@@ -17,6 +17,9 @@ import PostArticle from './pages/Article/PostArticle';
 //
 import TestArtikel from './pages/testauth/TestArtikel';
 import TestDetailArtikel from './pages/testauth/TestDetailArtikel';
+// admin
+import { Dashboard } from './pages/Admin/pages/dashboard/Dashboard';
+import ArticleAdmin from './pages/Admin/pages/ArticleAdmin/ArticleAdmin';
 
 function App() {
   return (
@@ -32,6 +35,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/article" element={<AllArticle />} />
           <Route path="/articleDetail/:id" element={<ArticleDetail />} />
+
+          {/* admin */}
+          <Route path="/dashboard-admin" element={<Dashboard />} />
+          <Route path="/article-admin" element={<ArticleAdmin />} />
 
           {/* route user */}
           <Route

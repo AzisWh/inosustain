@@ -1,10 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
 import { FooterComponent } from '../../components/Footer/FooterComponents';
 import { PostArticlePayload } from '../../type/article';
 import { articleService } from '../../api/articleServies';
 import { toast } from 'react-hot-toast';
-import { Editor } from '@tinymce/tinymce-react';
 
 const PostArticle = () => {
   const [formData, setFormData] = useState<PostArticlePayload>({
@@ -13,7 +12,6 @@ const PostArticle = () => {
     image: null,
   });
   const [loading, setLoading] = useState(false);
-  const editorRef = useRef<any>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

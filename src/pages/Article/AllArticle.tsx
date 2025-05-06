@@ -17,7 +17,7 @@ const AllArticle = () => {
         );
 
         setArticles(approvedArticles);
-        console.log(approvedArticles);
+        // console.log(approvedArticles);
       } catch (error) {
         console.error('Gagal mengambil data artikel:', error);
       }
@@ -28,7 +28,7 @@ const AllArticle = () => {
 
   if (articles.length === 0) {
     return (
-      <div className="text-center mt-10 text-gray-500">
+      <div className="mt-10 text-center text-gray-500">
         Belum ada artikel yang tersedia.
       </div>
     );
