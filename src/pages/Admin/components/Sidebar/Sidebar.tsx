@@ -7,14 +7,7 @@ import {
   SidebarItemGroup,
   SidebarItems,
 } from 'flowbite-react';
-import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiTable,
-  HiUser,
-} from 'react-icons/hi';
+import { HiChartPie, HiInbox, HiShoppingBag, HiUser } from 'react-icons/hi';
 
 export function Sidebar() {
   return (
@@ -39,9 +32,9 @@ export function Sidebar() {
               List Articles
             </SidebarItem>
             <SidebarItem
-              href="/Admin/articles/create"
+              href="/update-article"
               className="text-white hover:bg-gray-700">
-              Create Article
+              Update Article Status
             </SidebarItem>
             <SidebarItem
               href="/Admin/articles/drafts"

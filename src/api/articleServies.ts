@@ -16,6 +16,16 @@ export const articleService = {
     return response.data;
   },
 
+  async updateStatusArticle(
+    id: number,
+    status: 'disetujui' | 'ditolak'
+  ): Promise<ArticleResponse> {
+    const response = await axiosInstance.post(`/verifikasiArtikel/${id}`, {
+      verifikasi_admin: status,
+    });
+    return response.data;
+  },
+
   async postArticle(payload: PostArticlePayload): Promise<ArticleResponse> {
     const formData = new FormData();
     formData.append('title', payload.title);

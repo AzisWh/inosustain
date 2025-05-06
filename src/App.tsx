@@ -20,6 +20,7 @@ import TestDetailArtikel from './pages/testauth/TestDetailArtikel';
 // admin
 import { Dashboard } from './pages/Admin/pages/dashboard/Dashboard';
 import ArticleAdmin from './pages/Admin/pages/ArticleAdmin/ArticleAdmin';
+import UpdateArticle from './pages/Admin/pages/ArticleAdmin/UpdateArticle';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           {/* admin */}
           <Route path="/dashboard-admin" element={<Dashboard />} />
           <Route path="/article-admin" element={<ArticleAdmin />} />
+          <Route path="/update-article" element={<UpdateArticle />} />
 
           {/* route user */}
           <Route

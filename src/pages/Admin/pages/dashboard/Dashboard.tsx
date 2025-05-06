@@ -17,7 +17,7 @@ export function Dashboard() {
     <Layout>
       <div className="mt-6">
         <div className="grid mb-12 gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-          {statisticsCardsData.map(({ title, footer, ...rest }) => (
+          {statisticsCardsData.map(({ title, footer }) => (
             <div
               key={title}
               className="p-6 text-white bg-blue-500 rounded-lg shadow-md">
