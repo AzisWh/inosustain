@@ -10,6 +10,7 @@ const StatusUpdateArticle = () => {
   const navigate = useNavigate();
   const [status, setStatus] = useState<'disetujui' | 'ditolak' | ''>('');
   const [article, setArticle] = useState<ArticleType | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const stripHtml = (html: string) => {
     const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -39,6 +40,7 @@ const StatusUpdateArticle = () => {
       return toast.error('Status wajib dipilih!');
     }
 
+    setLoading(true);
     try {
       await articleService.updateStatusArticle(Number(id), status);
       toast.success('Status artikel berhasil diperbarui!');
@@ -47,8 +49,11 @@ const StatusUpdateArticle = () => {
     } catch (error) {
       toast.error('Gagal memperbarui status artikel.');
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <>
       <Layout>
@@ -107,8 +112,14 @@ const StatusUpdateArticle = () => {
 
               <button
                 type="submit"
-                className="w-full p-2 text-white transition bg-blue-600 rounded hover:bg-blue-700">
-                Update Status
+                disabled={loading}
+                className={`w-full p-2 text-white rounded transition 
+                ${
+                  loading
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-blue-600 hover:bg-blue-700'
+                }`}>
+                {loading ? 'Memproses...' : 'Update Status'}
               </button>
             </form>
           ) : (

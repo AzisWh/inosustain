@@ -39,10 +39,31 @@ function App() {
           <Route path="/articleDetail/:id" element={<ArticleDetail />} />
 
           {/* admin */}
-          <Route path="/dashboard-admin" element={<Dashboard />} />
+          {/* <Route path="/dashboard-admin" element={<Dashboard />} />
           <Route path="/article-admin" element={<ArticleAdmin />} />
           <Route path="/update-article" element={<UpdateArticle />} />
-          <Route path="/statusupdate/:id" element={<StatusUpdateArticle />} />
+          <Route path="/statusupdate/:id" element={<StatusUpdateArticle />} /> */}
+
+          <Route
+            path="/dashboard-admin"
+            element={<PrivateRoute component={Dashboard} requiredRole={2} />}
+          />
+          <Route
+            path="/article-admin"
+            element={<PrivateRoute component={ArticleAdmin} requiredRole={2} />}
+          />
+          <Route
+            path="/update-article"
+            element={
+              <PrivateRoute component={UpdateArticle} requiredRole={2} />
+            }
+          />
+          <Route
+            path="/statusupdate/:id"
+            element={
+              <PrivateRoute component={StatusUpdateArticle} requiredRole={2} />
+            }
+          />
 
           {/* route user */}
           <Route

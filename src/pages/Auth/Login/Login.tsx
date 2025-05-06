@@ -21,7 +21,7 @@ const Login: React.FC = () => {
       toast.success('Login successful!');
 
       if (response.user.role_type === 2) {
-        navigate('/');
+        navigate('/dashboard-admin');
         // console.log(response.user);
       } else if (response.user.role_type === 1) {
         navigate('/');
@@ -78,7 +78,7 @@ const Login: React.FC = () => {
         </button>
       </form>
 
-      <p className="text-sm mt-4">
+      <p className="mt-4 text-sm">
         Don't have an account?{' '}
         <a href="/register" className="text-[#0D4883] hover:underline">
           Sign up

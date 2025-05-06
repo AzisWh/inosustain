@@ -8,8 +8,28 @@ import {
   SidebarItems,
 } from 'flowbite-react';
 import { HiChartPie, HiInbox, HiShoppingBag, HiUser } from 'react-icons/hi';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { AppDispatch } from '../../../../redux/store';
+import { authService } from '../../../../api/authServices';
+import { logout } from '../../../../redux/auth/authSlice';
+import toast from 'react-hot-toast';
 
 export function Sidebar() {
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await authService.logout();
+      dispatch(logout());
+      toast.success('Logout berhasil');
+      navigate('/');
+    } catch (error) {
+      toast.error('Gagal logout. Silakan coba lagi.');
+      console.error(error);
+    }
+  };
   return (
     <SidebarFlowbite
       aria-label="Admin Sidebar"
@@ -60,6 +80,13 @@ export function Sidebar() {
             Settings
           </SidebarItem>
         </SidebarItemGroup>
+        <div className="px-3 pb-3">
+          <button
+            onClick={handleLogout}
+            className="w-full px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 bg-red-600 rounded hover:bg-red-700">
+            Logout
+          </button>
+        </div>
       </SidebarItems>
     </SidebarFlowbite>
   );
