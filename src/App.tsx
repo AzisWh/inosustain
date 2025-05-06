@@ -21,6 +21,7 @@ import TestDetailArtikel from './pages/testauth/TestDetailArtikel';
 import { Dashboard } from './pages/Admin/pages/dashboard/Dashboard';
 import ArticleAdmin from './pages/Admin/pages/ArticleAdmin/ArticleAdmin';
 import UpdateArticle from './pages/Admin/pages/ArticleAdmin/UpdateArticle';
+import StatusUpdateArticle from './pages/Admin/pages/UpdateArticle/StatusUpdateArticle';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/dashboard-admin" element={<Dashboard />} />
           <Route path="/article-admin" element={<ArticleAdmin />} />
           <Route path="/update-article" element={<UpdateArticle />} />
+          <Route path="/statusupdate/:id" element={<StatusUpdateArticle />} />
 
           {/* route user */}
           <Route

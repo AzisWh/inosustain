@@ -20,7 +20,7 @@ export const articleService = {
     id: number,
     status: 'disetujui' | 'ditolak'
   ): Promise<ArticleResponse> {
-    const response = await axiosInstance.post(`/verifikasiArtikel/${id}`, {
+    const response = await axiosInstance.put(`/updateStatusArtikel/${id}`, {
       verifikasi_admin: status,
     });
     return response.data;

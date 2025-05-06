@@ -54,6 +54,7 @@ const UpdateArticle = () => {
                         ? `http://127.0.0.1:8000/storage/${item.image}`
                         : Image
                     }
+                    verifikasi_admin={item.verifikasi_admin}
                     title={item.title}
                     descrip={item.content}
                     penulis={`${item.user.nama_depan} ${item.user.nama_belakang}`}

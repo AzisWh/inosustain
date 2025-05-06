@@ -51,6 +51,7 @@ const ArticleAdmin = () => {
                         : Image
                     }
                     title={item.title}
+                    verifikasi_admin={item.verifikasi_admin}
                     descrip={item.content}
                     penulis={`${item.user.nama_depan} ${item.user.nama_belakang}`}
                     email={item.user.email}
