@@ -154,12 +154,17 @@ const Register = () => {
         </button>
       </form>
 
-      <p className="text-sm mt-4">
-        Already have an account?{' '}
-        <a href="/login" className="text-[#0D4883] hover:underline">
-          Sign in
+      <div className="flex items-center justify-between text-sm">
+        <a href="/forgot-password" className="text-[#0D4883] hover:underline">
+          Forgot password?
         </a>
-      </p>
+        <p className="mt-4 text-sm">
+          Don't have an account?{' '}
+          <a href="/register" className="text-[#0D4883] hover:underline">
+            Sign up
+          </a>
+        </p>
+      </div>
     </AuthLayout>
   );
 };

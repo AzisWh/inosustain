@@ -60,16 +60,6 @@ const Login: React.FC = () => {
           />
         </div>
 
-        {/* <div className="flex items-center justify-between text-sm">
-          <label className="flex items-center gap-2">
-            <input type="checkbox" className="rounded" />
-            Remember me
-          </label>
-          <a href="#" className="text-blue-600 hover:underline">
-            Forgot password?
-          </a>
-        </div> */}
-
         <button
           type="submit"
           className="bg-[#0D4883] text-white py-2 rounded-md hover:bg-[#0D4883] transition"
@@ -78,12 +68,17 @@ const Login: React.FC = () => {
         </button>
       </form>
 
-      <p className="mt-4 text-sm">
-        Don't have an account?{' '}
-        <a href="/register" className="text-[#0D4883] hover:underline">
-          Sign up
+      <div className="flex items-center justify-between text-sm">
+        <a href="/forgot-password" className="text-[#0D4883] hover:underline">
+          Forgot password?
         </a>
-      </p>
+        <p className="mt-4 text-sm">
+          Don't have an account?{' '}
+          <a href="/register" className="text-[#0D4883] hover:underline">
+            Sign up
+          </a>
+        </p>
+      </div>
     </AuthLayout>
   );
 };

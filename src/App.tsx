@@ -14,6 +14,8 @@ import { Toaster } from 'react-hot-toast';
 import AllArticle from './pages/Article/AllArticle';
 import ArticleDetail from './pages/ArticleDetail/ArticleDetail';
 import PostArticle from './pages/Article/PostArticle';
+import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword';
+import ResetPassword from './pages/Auth/ResetPassword/ResetPassword';
 //
 import TestArtikel from './pages/testauth/TestArtikel';
 import TestDetailArtikel from './pages/testauth/TestDetailArtikel';
@@ -37,12 +39,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/article" element={<AllArticle />} />
           <Route path="/articleDetail/:id" element={<ArticleDetail />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
           {/* admin */}
-          {/* <Route path="/dashboard-admin" element={<Dashboard />} />
-          <Route path="/article-admin" element={<ArticleAdmin />} />
-          <Route path="/update-article" element={<UpdateArticle />} />
-          <Route path="/statusupdate/:id" element={<StatusUpdateArticle />} /> */}
 
           <Route
             path="/dashboard-admin"

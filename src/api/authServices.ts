@@ -4,6 +4,8 @@ import {
   UserType,
   RegisterPayload,
   LoginPayload,
+  ForgotPasswordRequest,
+  ResetPasswordPayload,
 } from '../type/auth';
 
 export const authService = {
@@ -31,6 +33,20 @@ export const authService = {
 
   async getProfile(): Promise<{ message: string; user: UserType }> {
     const response = await axiosInstance.get('/me');
+    return response.data;
+  },
+
+  async sendVerificationCode(
+    payload: ForgotPasswordRequest
+  ): Promise<{ message: string }> {
+    const response = await axiosInstance.post('/forgot-password', payload);
+    return response.data;
+  },
+
+  async resetPassword(
+    payload: ResetPasswordPayload
+  ): Promise<{ message: string }> {
+    const response = await axiosInstance.post('/reset-password', payload);
     return response.data;
   },
 };
