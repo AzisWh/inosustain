@@ -69,7 +69,7 @@ export const NavbarComponents = () => {
     }`;
 
   return (
-    <div className="md:px-10 px-4">
+    <div className="px-4 md:px-10">
       <Navbar
         className={`!bg-white !fixed !w-full !z-50 !start-0 !top-0 !transition-shadow duration-300 ${
           scroll ? '!shadow-xl' : ''
@@ -125,9 +125,9 @@ export const NavbarComponents = () => {
             </DropdownItem>
             <DropdownItem
               as={Link}
-              to="/projects/earnings"
-              className={dropdownItemStyle('/projects/earnings')}>
-              Earnings
+              to="/userArticle"
+              className={dropdownItemStyle('/userArticle')}>
+              Article ku
             </DropdownItem>
           </Dropdown>
 

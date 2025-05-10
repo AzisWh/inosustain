@@ -43,4 +43,9 @@ export const articleService = {
 
     return response.data;
   },
+
+  async userArticle(): Promise<ArticleListResponse> {
+    const response = await axiosInstance.get(`/userArtikel`);
+    return response.data;
+  },
 };

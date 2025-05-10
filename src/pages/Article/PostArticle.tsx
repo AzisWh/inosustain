@@ -4,6 +4,7 @@ import { FooterComponent } from '../../components/Footer/FooterComponents';
 import { PostArticlePayload } from '../../type/article';
 import { articleService } from '../../api/articleServies';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const PostArticle = () => {
   const [formData, setFormData] = useState<PostArticlePayload>({
@@ -12,6 +13,7 @@ const PostArticle = () => {
     image: null,
   });
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -33,6 +35,7 @@ const PostArticle = () => {
       const res = await articleService.postArticle(formData);
       toast.success(res.message);
       setFormData({ title: '', content: '', image: null });
+      navigate('/userArticle');
     } catch (err: any) {
       const msg =
         err?.response?.data?.message || 'Terjadi kesalahan saat posting.';
@@ -54,7 +57,7 @@ const PostArticle = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-6 md:p-10 rounded-xl shadow-lg max-w-3xl mx-auto space-y-6">
+          className="max-w-3xl p-6 mx-auto space-y-6 bg-white shadow-lg md:p-10 rounded-xl">
           <div>
             <label className="block font-semibold mb-2 text-[#0D4883]">
               Judul Artikel
@@ -64,7 +67,7 @@ const PostArticle = () => {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
               required
             />
           </div>
@@ -78,7 +81,7 @@ const PostArticle = () => {
               rows={6}
               value={formData.content}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
               required
             />
           </div>
@@ -91,7 +94,7 @@ const PostArticle = () => {
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
             />
           </div>
 

@@ -16,20 +16,21 @@ const initialState: AuthState = {
   error: null,
 };
 
-export const loginUser = createAsyncThunk(
-  'auth/login',
-  async (payload: LoginPayload, { rejectWithValue }) => {
-    try {
-      const response = await authService.login(payload);
-      return response;
-    } catch (error: any) {
-      const errorMsg =
-        error?.response?.data?.message ||
-        'Login gagal. Email atau password salah.';
-      return rejectWithValue(errorMsg);
-    }
+export const loginUser = createAsyncThunk<
+  { user: UserType; authorization: { token: string } },
+  LoginPayload,
+  { rejectValue: string }
+>('auth/login', async (payload: LoginPayload, { rejectWithValue }) => {
+  try {
+    const response = await authService.login(payload);
+    return response;
+  } catch (error: any) {
+    const errorMsg =
+      error?.response?.data?.message ||
+      'Login gagal. Email atau password salah.';
+    return rejectWithValue(errorMsg);
   }
-);
+});
 
 export const registerUser = createAsyncThunk(
   'auth/register',

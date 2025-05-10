@@ -16,9 +16,9 @@ import ArticleDetail from './pages/ArticleDetail/ArticleDetail';
 import PostArticle from './pages/Article/PostArticle';
 import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword';
+import UserArticle from './pages/Article/UserArticle';
 //
 import TestArtikel from './pages/testauth/TestArtikel';
-import TestDetailArtikel from './pages/testauth/TestDetailArtikel';
 // admin
 import { Dashboard } from './pages/Admin/pages/dashboard/Dashboard';
 import ArticleAdmin from './pages/Admin/pages/ArticleAdmin/ArticleAdmin';
@@ -67,13 +67,17 @@ function App() {
 
           {/* route user */}
           <Route
+            path="/userArticle"
+            element={<PrivateRoute component={UserArticle} requiredRole={1} />}
+          />
+          <Route
             path="/postArticle"
             element={<PrivateRoute component={PostArticle} requiredRole={1} />}
           />
 
           {/* tes route */}
           <Route path="/allArticle" element={<TestArtikel />} />
-          <Route path="/DetailArticle/:id" element={<TestDetailArtikel />} />
+          <Route path="/DetailArticle/:id" element={<ArticleDetail />} />
 
           <Route
             path="/roledua"
