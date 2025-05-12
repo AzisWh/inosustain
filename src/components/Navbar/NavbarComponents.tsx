@@ -89,6 +89,9 @@ export const NavbarComponents = () => {
           <Link to="/services" className={navItemStyle('/services')}>
             Services
           </Link>
+          <Link to="/blog" className={navItemStyle('/blog')}>
+            Blog
+          </Link>
 
           <Dropdown
             inline

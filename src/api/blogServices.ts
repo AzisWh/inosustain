@@ -31,14 +31,13 @@ export const blogService = {
 
   editBlog: async (
     id: string | number,
-    data: {
-      title: string;
-      content: string;
-      status: string;
-      // image: string | File | null;
-    }
+    data: FormData
   ): Promise<BlogResponse> => {
-    const response = await axiosInstance.put(`/editBlog/${id}`, data);
+    const response = await axiosInstance.post(`/editBlog/${id}`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return response.data;
   },
 

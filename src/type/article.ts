@@ -30,3 +30,12 @@ export interface PostArticlePayload {
   content: string;
   image: string | File | null;
 }
+
+type VerifikasiAdminStatus = 'menunggu' | 'disetujui' | 'ditolak';
+
+export interface PostArticleAdminPayload {
+  title: string;
+  content: string;
+  image: string | File | null;
+  verifikasi_admin: VerifikasiAdminStatus;
+}

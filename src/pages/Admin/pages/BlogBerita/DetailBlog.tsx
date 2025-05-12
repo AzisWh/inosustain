@@ -27,9 +27,8 @@ const DetailBlog = () => {
   }, [id]);
 
   if (loading)
-    return <p className="mt-10 text-center">Memuat detail artikel...</p>;
-  if (!blog)
-    return <p className="mt-10 text-center">Artikel tidak ditemukan.</p>;
+    return <p className="mt-10 text-center">Memuat detail Blog...</p>;
+  if (!blog) return <p className="mt-10 text-center">Blog tidak ditemukan.</p>;
 
   return (
     <Layout>

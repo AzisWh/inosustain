@@ -17,6 +17,8 @@ import PostArticle from './pages/Article/PostArticle';
 import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword';
 import UserArticle from './pages/Article/UserArticle';
+import AllBlog from './pages/Blog/AllBlog';
+import DetailBlogUser from './pages/Blog/DetailBlogUser';
 //
 import TestArtikel from './pages/testauth/TestArtikel';
 // admin
@@ -52,6 +54,8 @@ function App() {
           <Route path="/articleDetail/:id" element={<ArticleDetail />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/blog" element={<AllBlog />} />
+          <Route path="/detailBlogUser/:id" element={<DetailBlogUser />} />
 
           {/* admin */}
 

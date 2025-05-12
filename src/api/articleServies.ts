@@ -3,6 +3,7 @@ import {
   ArticleResponse,
   ArticleListResponse,
   PostArticlePayload,
+  PostArticleAdminPayload,
 } from '../type/article';
 
 export const articleService = {
@@ -46,6 +47,32 @@ export const articleService = {
 
   async userArticle(): Promise<ArticleListResponse> {
     const response = await axiosInstance.get(`/userArtikel`);
+    return response.data;
+  },
+
+  async postArticleAdmin(
+    payload: PostArticleAdminPayload
+  ): Promise<ArticleResponse> {
+    const formData = new FormData();
+    formData.append('title', payload.title);
+    formData.append('content', payload.content);
+    formData.append('verifikasi_admin', payload.verifikasi_admin);
+
+    if (payload.image instanceof File) {
+      formData.append('image', payload.image);
+    }
+
+    const response = await axiosInstance.post('/postArtikel', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    return response.data;
+  },
+
+  async deleteArticle(id: number): Promise<{ message: string }> {
+    const response = await axiosInstance.delete(`/delArticle/${id}`);
     return response.data;
   },
 };
