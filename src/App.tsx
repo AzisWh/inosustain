@@ -24,8 +24,19 @@ import { Dashboard } from './pages/Admin/pages/dashboard/Dashboard';
 import ArticleAdmin from './pages/Admin/pages/ArticleAdmin/ArticleAdmin';
 import UpdateArticle from './pages/Admin/pages/ArticleAdmin/UpdateArticle';
 import StatusUpdateArticle from './pages/Admin/pages/UpdateArticle/StatusUpdateArticle';
+import BlogBerita from './pages/Admin/pages/BlogBerita/BlogBerita';
+import DetailBlog from './pages/Admin/pages/BlogBerita/DetailBlog';
+import EditBlog from './pages/Admin/pages/BlogBerita/EditBlog';
+
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { setNavigateToLogin } from './api/axiosInterceptor';
 
 function App() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    setNavigateToLogin(() => () => navigate('/login'));
+  }, [navigate]);
   return (
     <div>
       <LoadingWrapper>
@@ -63,6 +74,18 @@ function App() {
             element={
               <PrivateRoute component={StatusUpdateArticle} requiredRole={2} />
             }
+          />
+          <Route
+            path="/blog-admin"
+            element={<PrivateRoute component={BlogBerita} requiredRole={2} />}
+          />
+          <Route
+            path="/detailBlog/:id"
+            element={<PrivateRoute component={DetailBlog} requiredRole={2} />}
+          />
+          <Route
+            path="/editBlog/:id"
+            element={<PrivateRoute component={EditBlog} requiredRole={2} />}
           />
 
           {/* route user */}

@@ -3,6 +3,12 @@ import { store } from '../redux/store';
 import { authService } from './authServices';
 import { setToken, logout } from '../redux/auth/authSlice';
 
+let navigateToLogin: (() => void) | null = null;
+
+export const setNavigateToLogin = (fn: () => void) => {
+  navigateToLogin = fn;
+};
+
 const axiosInstance = axios.create({
   // baseURL: import.meta.env.VITE_API_URL,
   baseURL: import.meta.env.VITE_API_URL,
@@ -48,9 +54,7 @@ axiosInstance.interceptors.response.use(
             originalRequest.headers.Authorization = `Bearer ${token}`;
             return axiosInstance(originalRequest);
           })
-          .catch((err) => {
-            return Promise.reject(err);
-          });
+          .catch((err) => Promise.reject(err));
       }
 
       originalRequest._retry = true;
@@ -58,6 +62,7 @@ axiosInstance.interceptors.response.use(
 
       try {
         const refreshResponse = await authService.refreshToken();
+        console.log('Refresh token berhasil:', refreshResponse);
         const newToken = refreshResponse.authorization.token;
 
         store.dispatch(setToken(newToken));
@@ -70,8 +75,18 @@ axiosInstance.interceptors.response.use(
 
         return axiosInstance(originalRequest);
       } catch (refreshError) {
+        console.error('Refresh token gagal:', refreshError);
+        console.log('Akan logout user');
         processQueue(refreshError, null);
+
+        await authService.logout();
+        localStorage.removeItem('token');
         store.dispatch(logout());
+
+        if (navigateToLogin) {
+          navigateToLogin();
+        }
+
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

@@ -56,23 +56,17 @@ export function Sidebar() {
               className="text-white hover:bg-gray-700">
               Update Article Status
             </SidebarItem>
+          </SidebarCollapse>
+          <SidebarCollapse
+            icon={HiShoppingBag}
+            label="Blog"
+            className="text-white hover:bg-gray-700">
             <SidebarItem
-              href="/Admin/articles/drafts"
+              href="/blog-admin"
               className="text-white hover:bg-gray-700">
-              Drafts
-            </SidebarItem>
-            <SidebarItem
-              href="/Admin/articles/categories"
-              className="text-white hover:bg-gray-700">
-              Categories
+              List Blog
             </SidebarItem>
           </SidebarCollapse>
-          <SidebarItem
-            href="/Admin/users"
-            icon={HiUser}
-            className="text-white hover:bg-gray-700">
-            Users
-          </SidebarItem>
           <SidebarItem
             href="/Admin/settings"
             icon={HiInbox}
