@@ -33,12 +33,87 @@ import EditBlog from './pages/Admin/pages/BlogBerita/EditBlog';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setNavigateToLogin } from './api/axiosInterceptor';
+import { useDispatch } from 'react-redux';
+import { authService } from './api/authServices';
+import { logout, setToken } from './redux/auth/authSlice';
+import { jwtDecode } from 'jwt-decode';
+
+interface JwtPayload {
+  exp: number;
+  [key: string]: any;
+}
+
+const isTokenExpired = (token: string | null): boolean => {
+  if (!token) return true;
+  try {
+    const decoded = jwtDecode<JwtPayload>(token);
+    const currentTime = Date.now() / 1000;
+    return decoded.exp < currentTime;
+  } catch (error) {
+    console.error('Error decoding token:', error);
+    return true;
+  }
+};
 
 function App() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setNavigateToLogin(() => () => navigate('/login'));
-  }, [navigate]);
+
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      if (isTokenExpired(storedToken)) {
+        console.log('Token kadaluarsa saat aplikasi dimuat');
+        authService.logout().catch((error) => {
+          console.error('Gagal logout, melanjutkan logout lokal:', error);
+        });
+        localStorage.removeItem('token');
+        dispatch(logout());
+        navigate('/login');
+      } else {
+        dispatch(setToken(storedToken));
+      }
+    }
+  }, [dispatch, navigate]);
+
+  useEffect(() => {
+    const timeoutMinutes = 5;
+    const timeoutMs = timeoutMinutes * 60 * 1000;
+    let lastActivity = Date.now();
+
+    const resetTimer = () => {
+      lastActivity = Date.now();
+    };
+
+    const events = ['mousemove', 'keydown', 'click', 'scroll'];
+    events.forEach((event) => window.addEventListener(event, resetTimer));
+
+    const checkIdle = async () => {
+      const currentTime = Date.now();
+      const token = localStorage.getItem('token');
+      if (token && currentTime - lastActivity > timeoutMs) {
+        console.log('Pengguna idle terlalu lama, logout...');
+        try {
+          await authService.logout();
+          console.log('Logout berhasil');
+        } catch (logoutError) {
+          console.error('Gagal logout, melanjutkan logout lokal:', logoutError);
+        }
+        localStorage.removeItem('token');
+        dispatch(logout());
+        navigate('/login');
+      }
+    };
+
+    const interval = setInterval(checkIdle, 1000);
+
+    return () => {
+      events.forEach((event) => window.removeEventListener(event, resetTimer));
+      clearInterval(interval);
+    };
+  }, [dispatch, navigate]);
   return (
     <div>
       <LoadingWrapper>
@@ -100,19 +175,6 @@ function App() {
           <Route
             path="/postArticle"
             element={<PrivateRoute component={PostArticle} requiredRole={1} />}
-          />
-
-          {/* tes route */}
-          <Route path="/allArticle" element={<TestArtikel />} />
-          <Route path="/DetailArticle/:id" element={<ArticleDetail />} />
-
-          <Route
-            path="/roledua"
-            element={<PrivateRoute component={Roledua} requiredRole={2} />}
-          />
-          <Route
-            path="/rolesatu"
-            element={<PrivateRoute component={Rolesatu} requiredRole={2} />}
           />
         </Routes>
       </LoadingWrapper>
