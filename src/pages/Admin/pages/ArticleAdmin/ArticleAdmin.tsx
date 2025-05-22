@@ -7,8 +7,10 @@ import ArticleCardDashboard from '../../components/ArticleCard/ArticleCard';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'flowbite-react';
 import toast from 'react-hot-toast';
 import { Button } from '../../../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const ArticleAdmin = () => {
+  const navigate = useNavigate();
   const [articles, setArticles] = useState<ArticleType[]>([]);
   useEffect(() => {
     const fetchArticles = async () => {
@@ -72,7 +74,7 @@ const ArticleAdmin = () => {
   };
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [articleToDelete, setBlogToDelete] = useState<number | null>(null);
+  const [articleToDelete, setArticleToDelete] = useState<number | null>(null);
 
   const handleDelete = async () => {
     if (!articleToDelete) return;
@@ -88,7 +90,7 @@ const ArticleAdmin = () => {
       toast.error(msg);
     } finally {
       setShowDeleteModal(false);
-      setBlogToDelete(null);
+      setArticleToDelete(null);
     }
   };
 
@@ -134,14 +136,21 @@ const ArticleAdmin = () => {
                         penulis={`${item.user.nama_depan} ${item.user.nama_belakang}`}
                         email={item.user.email}
                       />
-                      <button
-                        onClick={() => {
-                          setBlogToDelete(item.id);
-                          setShowDeleteModal(true);
-                        }}
-                        className="absolute px-3 py-1 text-sm text-white bg-red-600 rounded top-2 right-2 hover:bg-red-700">
-                        Hapus
-                      </button>
+                      <div className="absolute flex space-x-2 top-2 right-2">
+                        <button
+                          onClick={() => {
+                            setArticleToDelete(item.id);
+                            setShowDeleteModal(true);
+                          }}
+                          className="px-3 py-1 text-sm text-white bg-red-600 rounded hover:bg-red-700">
+                          hapus
+                        </button>
+                        <button
+                          onClick={() => navigate(`/edit-Artikel/${item.id}`)}
+                          className="px-3 py-1 text-sm text-white bg-blue-600 rounded hover:bg-blue-700">
+                          Edit Artikel
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -152,7 +161,7 @@ const ArticleAdmin = () => {
       </Layout>
 
       <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <ModalHeader>Edit Blog</ModalHeader>
+        <ModalHeader>Add Article</ModalHeader>
         <ModalBody className="!bg-white">
           <div className="space-y-4">
             <div>

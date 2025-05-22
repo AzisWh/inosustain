@@ -58,7 +58,7 @@ export function Sidebar() {
             </SidebarItem>
           </SidebarCollapse>
           <SidebarCollapse
-            icon={HiShoppingBag}
+            icon={HiUser}
             label="Blog"
             className="text-white hover:bg-gray-700">
             <SidebarItem
@@ -67,12 +67,16 @@ export function Sidebar() {
               List Blog
             </SidebarItem>
           </SidebarCollapse>
-          <SidebarItem
-            href="/Admin/settings"
+          <SidebarCollapse
             icon={HiInbox}
+            label="Buku"
             className="text-white hover:bg-gray-700">
-            Settings
-          </SidebarItem>
+            <SidebarItem
+              href="/buku-admin"
+              className="text-white hover:bg-gray-700">
+              List Buku
+            </SidebarItem>
+          </SidebarCollapse>
         </SidebarItemGroup>
         <div className="px-3 pb-3">
           <button

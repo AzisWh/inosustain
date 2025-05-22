@@ -17,7 +17,7 @@ const ArticleDetail = () => {
         if (id) {
           const res = await articleService.getArticleById(Number(id));
           setArticle(res.artikel);
-          console.log(res.artikel);
+          // console.log(res.artikel);
         }
       } catch (error) {
         console.error('Gagal mengambil detail artikel:', error);

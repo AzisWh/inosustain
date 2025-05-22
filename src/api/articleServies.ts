@@ -71,6 +71,18 @@ export const articleService = {
     return response.data;
   },
 
+  editArticle: async (
+    id: string | number,
+    data: FormData
+  ): Promise<ArticleResponse> => {
+    const response = await axiosInstance.post(`/editArticle/${id}`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+
   async deleteArticle(id: number): Promise<{ message: string }> {
     const response = await axiosInstance.delete(`/delArticle/${id}`);
     return response.data;

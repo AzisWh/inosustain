@@ -7,8 +7,6 @@ import Services from './pages/Services/Services';
 import ContactUs from './pages/Contact/ContactUs';
 import Register from './pages/Auth/Register/Register';
 import Login from './pages/Auth/Login/Login';
-import Roledua from './pages/testauth/Roledua';
-import Rolesatu from './pages/testauth/Rolesatu';
 import PrivateRoute from './PrivateRoute';
 import { Toaster } from 'react-hot-toast';
 import AllArticle from './pages/Article/AllArticle';
@@ -19,8 +17,6 @@ import ResetPassword from './pages/Auth/ResetPassword/ResetPassword';
 import UserArticle from './pages/Article/UserArticle';
 import AllBlog from './pages/Blog/AllBlog';
 import DetailBlogUser from './pages/Blog/DetailBlogUser';
-//
-import TestArtikel from './pages/testauth/TestArtikel';
 // admin
 import { Dashboard } from './pages/Admin/pages/dashboard/Dashboard';
 import ArticleAdmin from './pages/Admin/pages/ArticleAdmin/ArticleAdmin';
@@ -29,6 +25,9 @@ import StatusUpdateArticle from './pages/Admin/pages/UpdateArticle/StatusUpdateA
 import BlogBerita from './pages/Admin/pages/BlogBerita/BlogBerita';
 import DetailBlog from './pages/Admin/pages/BlogBerita/DetailBlog';
 import EditBlog from './pages/Admin/pages/BlogBerita/EditBlog';
+import EditArticle from './pages/Admin/pages/ArticleAdmin/EditArticle';
+import BukuAdmin from './pages/Admin/pages/Buku/BukuAdmin';
+import BukuDetail from './pages/Admin/pages/Buku/BukuDetail';
 
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -165,6 +164,18 @@ function App() {
           <Route
             path="/editBlog/:id"
             element={<PrivateRoute component={EditBlog} requiredRole={2} />}
+          />
+          <Route
+            path="/edit-Artikel/:id"
+            element={<PrivateRoute component={EditArticle} requiredRole={2} />}
+          />
+          <Route
+            path="/buku-admin"
+            element={<PrivateRoute component={BukuAdmin} requiredRole={2} />}
+          />
+          <Route
+            path="/BukuDetail/:id"
+            element={<PrivateRoute component={BukuDetail} requiredRole={2} />}
           />
 
           {/* route user */}

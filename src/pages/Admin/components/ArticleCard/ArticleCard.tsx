@@ -63,13 +63,13 @@ const ArticleCardDashboard: React.FC<ArticleItem> = ({
         </span>
       </div>
       <div className="flex flex-col items-center justify-center gap-4">
-        <Link to="#">
+        {/* <Link to={`/edit-Artikel/${id}`}>
           <Button
             text={'Edit Article'}
             type="button"
             className="duration-300 px-6 py-2 md:w-[180px] border-2 border-[#0D4883] text-[#0D4883] hover:text-white hover:bg-[#0D4883] hover:border-white rounded-full font-bold text-[16px] md:text-lg"
           />
-        </Link>
+        </Link> */}
         {verifikasi_admin === 'menunggu' && (
           <Link to={`/statusupdate/${id}`}>
             <Button

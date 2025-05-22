@@ -8,7 +8,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 const StatusUpdateArticle = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [status, setStatus] = useState<'disetujui' | 'ditolak' | ''>('');
+  const [verifikasi_admin, setVerifikasi_admin] = useState<
+    'disetujui' | 'ditolak' | ''
+  >('');
   const [article, setArticle] = useState<ArticleType | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -36,15 +38,15 @@ const StatusUpdateArticle = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!id || !status) {
+    if (!id || !verifikasi_admin) {
       return toast.error('Status wajib dipilih!');
     }
 
     setLoading(true);
     try {
-      await articleService.updateStatusArticle(Number(id), status);
+      await articleService.updateStatusArticle(Number(id), verifikasi_admin);
       toast.success('Status artikel berhasil diperbarui!');
-      setStatus('');
+      setVerifikasi_admin('');
       navigate('/article-admin');
     } catch (error) {
       toast.error('Gagal memperbarui status artikel.');
@@ -98,9 +100,11 @@ const StatusUpdateArticle = () => {
                 </label>
                 <select
                   id="status"
-                  value={status}
+                  value={verifikasi_admin}
                   onChange={(e) =>
-                    setStatus(e.target.value as 'disetujui' | 'ditolak')
+                    setVerifikasi_admin(
+                      e.target.value as 'disetujui' | 'ditolak'
+                    )
                   }
                   className="w-full p-2 border border-gray-300 rounded"
                   required>
