@@ -127,7 +127,8 @@ const ArticleAdmin = () => {
                         id={item.id}
                         image={
                           item.image
-                            ? `http://127.0.0.1:8000/storage/${item.image}`
+                            ? // ? `http://127.0.0.1:8000/storage/${item.image}`
+                              `http://api-serviceinosustain.com/storage/${item.image}`
                             : Image
                         }
                         title={item.title}

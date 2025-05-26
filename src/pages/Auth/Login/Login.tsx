@@ -20,14 +20,15 @@ const Login: React.FC = () => {
 
       toast.success('Login successful!');
 
-      if (response.user.role_type === 2) {
+      if (Number(response.user.role_type) === 2) {
         navigate('/dashboard-admin');
-        // console.log(response.user);
-      } else if (response.user.role_type === 1) {
+        console.log(response.user);
+      } else if (Number(response.user.role_type) === 1) {
         navigate('/');
         console.log(response.user);
       } else {
         toast.error('Unknown role');
+        console.log(response.user);
       }
     } catch (error: any) {
       const errorMessage = typeof error === 'string' ? error : 'Login gagal.';

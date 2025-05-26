@@ -42,7 +42,8 @@ const ArticleDetail = () => {
         <img
           src={
             article.image
-              ? `http://127.0.0.1:8000/storage/${article.image}`
+              ? // ? `http://127.0.0.1:8000/storage/${article.image}`
+                `http://api-serviceinosustain.com/storage/${article.image}`
               : Image
           }
           alt={article.title}

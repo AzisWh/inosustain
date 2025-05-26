@@ -80,7 +80,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   }, [token, user, dispatch, navigate]);
 
   useEffect(() => {
-    if (user && user.role_type !== requiredRole) {
+    if (user && Number(user.role_type) !== requiredRole) {
       toast.error('Anda tidak memiliki akses ke halaman ini.');
       navigate('/login', { replace: true });
     }
@@ -90,7 +90,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
     !token ||
     isTokenExpired(token) ||
     !user ||
-    (user && user.role_type !== requiredRole)
+    (user && Number(user.role_type) !== requiredRole)
   ) {
     return null;
   }

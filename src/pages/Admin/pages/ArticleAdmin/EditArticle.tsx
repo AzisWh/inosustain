@@ -44,7 +44,8 @@ const EditArticle = () => {
 
           if (response.artikel.image) {
             setImagePreview(
-              `http://127.0.0.1:8000/storage/${response.artikel.image}`
+              // `http://127.0.0.1:8000/storage/${response.artikel.image}`
+              `http://api-serviceinosustain.com/storage/${response.artikel.image}`
             );
           }
         }
