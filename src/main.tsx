@@ -8,14 +8,17 @@ import './assets/font/DMSans.ttf';
 import { store, persistor } from './redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import { LanguageProvider } from './context/BahasaContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <LanguageProvider> 
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </LanguageProvider>
       </PersistGate>
     </Provider>
   </StrictMode>

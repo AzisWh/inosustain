@@ -1,12 +1,14 @@
 // import React from 'react';
 import LogoBg from '../../../assets/images/logo-bg.svg';
 import { Button } from '../../../components/Button/Button';
+import { useLanguage } from '../../../context/BahasaContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between px-2 mt-15 md:mt-0 md:px-16">
+    <section className="flex flex-col items-center justify-between px-2 md:flex-row mt-15 md:mt-0 md:px-16">
       <div
-        className="w-full md:w-1/2 text-left space-y-4"
+        className="w-full space-y-4 text-left md:w-1/2"
         data-aos="fade-right">
         <h1
           className="text-[40px] md:text-[60px] md:text-5xl font-bold text-white"
@@ -18,8 +20,7 @@ const Hero = () => {
           style={{ fontFamily: 'PoppinsRegular' }}>
           <span className="font-extrabold">Inosustain</span>{' '}
           <span className="font-extralight">
-            adalah lembaga independen yang bergerak di bidang penelitian dan
-            konsultan berbagai Program Berkelanjutan.
+            {t.home_description}
           </span>
         </p>
         <Button
@@ -35,7 +36,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="w-full md:w-1/2 flex justify-center" data-aos="fade-left">
+      <div className="flex justify-center w-full md:w-1/2" data-aos="fade-left">
         <img
           src={LogoBg}
           alt="Hero Image"

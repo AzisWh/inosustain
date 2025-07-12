@@ -20,6 +20,7 @@ import { authService } from '../../api/authServices';
 import { logout } from '../../redux/auth/authSlice';
 import toast from 'react-hot-toast';
 import { RootState } from '../../redux/store';
+import { useLanguage } from '../../context/BahasaContext';
 
 export const NavbarComponents = () => {
   const location = useLocation();
@@ -30,6 +31,8 @@ export const NavbarComponents = () => {
   const navigate = useNavigate();
 
   const user = useSelector((state: RootState) => state.auth.user);
+
+  const { language, changeLanguage } = useLanguage();
 
   const handleLogout = async () => {
     try {
@@ -137,6 +140,17 @@ export const NavbarComponents = () => {
           <Link to="/contactus" className={navItemStyle('/contactus')}>
             Contact
           </Link>
+
+          
+          <div className="w-full mt-2 md:w-auto md:mt-0">
+            <select
+              value={language}
+              onChange={(e) => changeLanguage(e.target.value as 'id' | 'en')}
+              className="w-full md:w-auto text-[#0D4883] border border-blue-400 rounded px-2 py-1">
+              <option value="id">Bahasa</option>
+              <option value="en">English</option>
+            </select>
+          </div>
 
           {user ? (
             <Button
