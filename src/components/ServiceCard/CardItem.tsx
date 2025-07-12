@@ -10,36 +10,55 @@ export const ServiceCardContent = [
     id: 1,
     title: 'Social Mapping',
     image: smt,
-    desc: 'Pemetaan Sosial',
+    desc: {
+      id: 'Pemetaan Sosial',
+      en: 'Social Mapping',
+    },
   },
   {
     id: 2,
     title: 'Stakeholder Mapping',
     image: stakemt,
-    desc: 'Pemetaan Pemangku Kepentingan',
+    desc: {
+      id: 'Pemetaan Pemangku Kepentingan',
+      en: 'Stakeholder Mapping',
+    },
   },
   {
     id: 3,
-    title: 'Social Return On Inverstment',
+    title: 'Social Return On Investment',
     image: srit,
-    desc: 'Pemetaan Dampak',
+    desc: {
+      id: 'Pemetaan Dampak',
+      en: 'Impact Mapping',
+    },
   },
   {
     id: 4,
-    title: 'Monitoring & Evaluation Programe',
+    title: 'Monitoring & Evaluation Program',
     image: met,
-    desc: 'Pemetaan Pemangku Kepentingan',
+    desc: {
+      id: 'Pemantauan dan Evaluasi Program',
+      en: 'Monitoring & Evaluation Program',
+    },
   },
   {
     id: 5,
     title: 'Propper Assistance',
     image: pat,
-    desc: 'Pendampingan PROPER',
+    desc: {
+      id: 'Pendampingan PROPER',
+      en: 'Proper Assistance',
+    },
   },
   {
     id: 6,
     title: 'Community Development Officer',
     image: cdot,
-    desc: 'Pengadaan CDO',
+    desc: {
+      id: 'Pengadaan CDO',
+      en: 'Community Development Officer',
+    },
   },
 ];
+

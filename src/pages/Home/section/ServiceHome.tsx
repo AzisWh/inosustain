@@ -2,11 +2,13 @@ import { useState, useRef, useEffect } from 'react';
 import ServiceCard from '../../../components/ServiceCard/ServiceCard';
 import { ServiceCardContent } from '../../../components/ServiceCard/CardItem';
 import { Button } from '../../../components/Button/Button';
+import { useLanguage } from '../../../context/BahasaContext';
 
 const ServiceHome = () => {
   const [expanded, setExpanded] = useState(false);
   const visibleCount = expanded ? ServiceCardContent.length : 3;
   const containerRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     if (expanded && containerRef.current) {
@@ -25,7 +27,7 @@ const ServiceHome = () => {
               key={content.id}
               image={content.image}
               title={content.title}
-              desc={content.desc}
+              desc={content.desc[language]}
             />
           ))}
         </div>
