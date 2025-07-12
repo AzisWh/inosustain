@@ -1,7 +1,9 @@
 import ServiceCard from '../../../components/ServiceCard/ServiceCard';
 import { ServiceCardContent } from '../../../components/ServiceCard/CardItem';
+import { useLanguage } from '../../../context/BahasaContext';
 
 const ServiceSection = () => {
+  const { language } = useLanguage();
   return (
     <section className="relative px-4 pb-10">
       <div className={`transition-all duration-700 ease-in-out `}>
@@ -11,7 +13,7 @@ const ServiceSection = () => {
               key={content.id}
               image={content.image}
               title={content.title}
-              desc={content.desc}
+              desc={content.desc[language]}
             />
           ))}
         </div>

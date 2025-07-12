@@ -2,8 +2,9 @@ import { Card } from 'flowbite-react';
 import React from 'react';
 
 interface ServiceCardProps {
-  image: string;
+  id?: number;
   title: string;
+  image: string;
   desc: string;
 }
 

@@ -27,7 +27,7 @@ const ServiceHome = () => {
               key={content.id}
               image={content.image}
               title={content.title}
-              desc={content.desc[language]}
+              desc={content.desc[language]} 
             />
           ))}
         </div>

@@ -5,7 +5,19 @@ import smt from '../../assets/images/SMT.png';
 import srit from '../../assets/images/SRIT.png';
 import stakemt from '../../assets/images/STAKEHOLDERMT.png';
 
-export const ServiceCardContent = [
+interface MultilingualText {
+  id: string;
+  en: string;
+}
+
+interface ServiceCardData {
+  id: number;
+  title: string;
+  image: string;
+  desc: MultilingualText;
+}
+
+export const ServiceCardContent: ServiceCardData[] = [
   {
     id: 1,
     title: 'Social Mapping',
