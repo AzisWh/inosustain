@@ -70,7 +70,7 @@ function App() {
         });
         localStorage.removeItem('token');
         dispatch(logout());
-        navigate('/login');
+        navigate('/');
       } else {
         dispatch(setToken(storedToken));
       }
@@ -102,7 +102,7 @@ function App() {
         }
         localStorage.removeItem('token');
         dispatch(logout());
-        navigate('/login');
+        navigate('/');
       }
     };
 

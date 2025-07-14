@@ -159,9 +159,9 @@ const Register = () => {
           Forgot password?
         </a>
         <p className="mt-4 text-sm">
-          Don't have an account?{' '}
-          <a href="/register" className="text-[#0D4883] hover:underline">
-            Sign up
+          Already have an account?{' '}
+          <a href="/login" className="text-[#0D4883] hover:underline">
+            Sign in
           </a>
         </p>
       </div>
