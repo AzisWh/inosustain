@@ -25,7 +25,7 @@ const BlogCardUser: React.FC<BlogItem> = ({ id, image, title, content }) => {
           <img
             src={image}
             alt="Blog Image"
-            className="mt-4 w-[342px] h-[256px] object-contain"
+            className="mt-4 w-[342px] h-[256px] object-contain mx-auto"
           />
           <h5
             className="md:text-[30px] text-[25px] font-bold text-[#0D4883]"
