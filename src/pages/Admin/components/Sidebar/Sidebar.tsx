@@ -8,15 +8,17 @@ import {
   SidebarItems,
 } from 'flowbite-react';
 import { HiChartPie, HiInbox, HiShoppingBag, HiUser } from 'react-icons/hi';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../../../../redux/store';
 import { authService } from '../../../../api/authServices';
 import { logout } from '../../../../redux/auth/authSlice';
+import { RootState } from '../../../../redux/store';
 import toast from 'react-hot-toast';
 
 export function Sidebar() {
   const dispatch = useDispatch<AppDispatch>();
+  const loading = useSelector((state: RootState) => state.auth.loading);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -33,47 +35,56 @@ export function Sidebar() {
   return (
     <SidebarFlowbite
       aria-label="Admin Sidebar"
-      className="fixed top-0 left-0 w-64 h-screen text-white bg-gray-800">
+      className="fixed top-0 left-0 w-64 h-screen text-gray-800 bg-gray-200" 
+    >
       <SidebarItems>
         <SidebarItemGroup>
           <SidebarItem
             href="/dashboard-admin"
             icon={HiChartPie}
-            className="text-white hover:bg-gray-700">
+            className="text-gray-800 hover:bg-gray-300"
+          >
             Dashboard
           </SidebarItem>
           <SidebarCollapse
             icon={HiShoppingBag}
             label="Articles"
-            className="text-white hover:bg-gray-700">
+            className="text-gray-800 hover:bg-gray-300"
+          >
             <SidebarItem
               href="/article-admin"
-              className="text-white hover:bg-gray-700">
+              className="text-gray-800 hover:bg-gray-300"
+            >
               List Articles
             </SidebarItem>
             <SidebarItem
               href="/update-article"
-              className="text-white hover:bg-gray-700">
+              className="text-gray-800 hover:bg-gray-300"
+            >
               Update Article Status
             </SidebarItem>
           </SidebarCollapse>
           <SidebarCollapse
             icon={HiUser}
             label="Blog"
-            className="text-white hover:bg-gray-700">
+            className="text-gray-800 hover:bg-gray-300"
+          >
             <SidebarItem
               href="/blog-admin"
-              className="text-white hover:bg-gray-700">
+              className="text-gray-800 hover:bg-gray-300"
+            >
               List Blog
             </SidebarItem>
           </SidebarCollapse>
           <SidebarCollapse
             icon={HiInbox}
             label="Buku"
-            className="text-white hover:bg-gray-700">
+            className="text-gray-800 hover:bg-gray-300"
+          >
             <SidebarItem
               href="/buku-admin"
-              className="text-white hover:bg-gray-700">
+              className="text-gray-800 hover:bg-gray-300"
+            >
               List Buku
             </SidebarItem>
           </SidebarCollapse>
@@ -81,8 +92,10 @@ export function Sidebar() {
         <div className="px-3 pb-3">
           <button
             onClick={handleLogout}
-            className="w-full px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 bg-red-600 rounded hover:bg-red-700">
-            Logout
+            disabled={loading}
+            className="w-full px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 bg-red-600 rounded hover:bg-red-700"
+          >
+            {loading ? 'Logging out...' : 'Logout'}
           </button>
         </div>
       </SidebarItems>
