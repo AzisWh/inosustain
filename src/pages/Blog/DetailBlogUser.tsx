@@ -47,7 +47,7 @@ const DetailBlogUser = () => {
                   : '/default-image.jpg'
               }
               alt={blog.title}
-              className="w-full h-auto max-h-[400px] object-cover mb-4 rounded-xl"
+              className="w-full max-w-3xl h-auto max-h-[400px] object-cover mb-4 rounded-xl mx-auto"
             />
             <p className="text-gray-700 whitespace-pre-line">{blog.content}</p>
           </div>
