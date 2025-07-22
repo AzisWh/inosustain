@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from './redux/store';
-import toast from 'react-hot-toast';
-import { RoleType } from './type/auth';
-import { fetchCurrentUser, logout } from './redux/auth/authSlice';
-import { jwtDecode } from 'jwt-decode';
-import { authService } from './api/authServices';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "./redux/store";
+import toast from "react-hot-toast";
+import { RoleType } from "./type/auth";
+import { fetchCurrentUser, logout } from "./redux/auth/authSlice";
+import { jwtDecode } from "jwt-decode";
+import { authService } from "./api/authServices";
 
 interface JwtPayload {
   exp: number;
@@ -21,7 +21,7 @@ const isTokenExpired = (token: string | null): boolean => {
     const currentTime = Date.now() / 1000;
     return decoded.exp < currentTime;
   } catch (error) {
-    console.error('Error decoding token:', error);
+    console.error("Error decoding token:", error);
     return true;
   }
 };
@@ -42,24 +42,24 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   useEffect(() => {
     const checkAuth = async () => {
       if (!token) {
-        toast.error('Silakan login terlebih dahulu.');
+        toast.error("Silakan login terlebih dahulu.");
         dispatch(logout());
-        navigate('/login', { replace: true });
+        navigate("/login", { replace: true });
         return;
       }
 
       if (isTokenExpired(token)) {
-        console.log('Token kadaluarsa di PrivateRoute');
+        console.log("Token kadaluarsa di PrivateRoute");
         try {
           await authService.logout();
-          console.log('Logout berhasil');
+          console.log("Logout berhasil");
         } catch (logoutError) {
-          console.error('Gagal logout, melanjutkan logout lokal:', logoutError);
-          toast.error('Sesi Anda telah kadaluarsa. Silakan login kembali.');
+          console.error("Gagal logout, melanjutkan logout lokal:", logoutError);
+          toast.error("Sesi Anda telah kadaluarsa. Silakan login kembali.");
         }
-        localStorage.removeItem('token');
+        localStorage.removeItem("token");
         dispatch(logout());
-        navigate('/login', { replace: true });
+        navigate("/login", { replace: true });
         return;
       }
 
@@ -67,11 +67,11 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
         try {
           await dispatch(fetchCurrentUser() as any).unwrap();
         } catch (error) {
-          console.error('Gagal mengambil data pengguna:', error);
-          toast.error('Sesi Anda tidak valid. Silakan login kembali.');
-          localStorage.removeItem('token');
+          console.error("Gagal mengambil data pengguna:", error);
+          toast.error("Sesi Anda tidak valid. Silakan login kembali.");
+          localStorage.removeItem("token");
           dispatch(logout());
-          navigate('/login', { replace: true });
+          navigate("/login", { replace: true });
         }
       }
     };
@@ -81,8 +81,8 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
 
   useEffect(() => {
     if (user && Number(user.role_type) !== requiredRole) {
-      toast.error('Anda tidak memiliki akses ke halaman ini.');
-      navigate('/login', { replace: true });
+      toast.error("Anda tidak memiliki akses ke halaman ini.");
+      navigate("/login", { replace: true });
     }
   }, [user, requiredRole, navigate]);
 

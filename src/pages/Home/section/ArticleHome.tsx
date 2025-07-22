@@ -1,9 +1,9 @@
-import { useRef } from 'react';
-import { articleService } from '../../../api/articleServies';
-import { ArticleType } from '../../../type/article';
-import ApiArticle from '../../../components/TESAPI/ApiArticle';
-import Image from '../../../assets/images/PAT.png';
-import { useState, useEffect } from 'react';
+import { useRef } from "react";
+import { articleService } from "../../../api/articleServies";
+import { ArticleType } from "../../../type/article";
+import ApiArticle from "../../../components/TESAPI/ApiArticle";
+import Image from "../../../assets/images/PAT.png";
+import { useState, useEffect } from "react";
 
 const ArticleHome = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,13 +16,13 @@ const ArticleHome = () => {
       try {
         const response = await articleService.getAllArticles();
         const approvedArticles = response.artikels.filter(
-          (artikel) => artikel.verifikasi_admin === 'disetujui'
+          (artikel) => artikel.verifikasi_admin === "disetujui"
         );
 
         setArticles(approvedArticles);
         setError(null);
       } catch (err) {
-        setError('Gagal mengambil data artikel.');
+        setError("Gagal mengambil data artikel.");
       } finally {
         setIsLoading(false);
       }
@@ -35,13 +35,15 @@ const ArticleHome = () => {
     <section className="relative px-4 pb-10">
       <div
         ref={containerRef}
-        className="transition-all duration-700 ease-in-out">
+        className="transition-all duration-700 ease-in-out"
+      >
         {isLoading ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="p-4 bg-gray-100 border rounded shadow animate-pulse h-52">
+                className="p-4 bg-gray-100 border rounded shadow animate-pulse h-52"
+              >
                 <div className="w-full h-32 mb-2 bg-gray-300 rounded"></div>
                 <div className="w-3/4 h-4 mb-1 bg-gray-300 rounded"></div>
                 <div className="w-1/2 h-3 bg-gray-200 rounded"></div>
@@ -69,7 +71,7 @@ const ArticleHome = () => {
                 title={item.title}
                 descrip={item.content}
                 penulis={`${item.user.nama_depan} ${item.user.nama_belakang}`}
-                email={item.user.email}
+                // email={item.user.email}
               />
             ))}
           </div>

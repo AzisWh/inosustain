@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom';
-import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
-import { FooterComponent } from '../../components/Footer/FooterComponents';
-import { useEffect, useState } from 'react';
-import { ArticleType } from '../../type/article';
-import { articleService } from '../../api/articleServies';
-import Image from '../../assets/images/PAT.png';
+import { useParams } from "react-router-dom";
+import { NavbarComponents } from "../../components/Navbar/NavbarComponents";
+import { FooterComponent } from "../../components/Footer/FooterComponents";
+import { useEffect, useState } from "react";
+import { ArticleType } from "../../type/article";
+import { articleService } from "../../api/articleServies";
+import Image from "../../assets/images/PAT.png";
 
 const ArticleDetail = () => {
   const { id } = useParams();
@@ -20,7 +20,7 @@ const ArticleDetail = () => {
           // console.log(res.artikel);
         }
       } catch (error) {
-        console.error('Gagal mengambil detail artikel:', error);
+        console.error("Gagal mengambil detail artikel:", error);
       } finally {
         setLoading(false);
       }
@@ -50,8 +50,7 @@ const ArticleDetail = () => {
           className="w-full h-[300px] object-contain mb-4"
         />
         <p className="text-sm text-gray-500">
-          {article.user.nama_depan} {article.user.nama_belakang} -{' '}
-          {article.user.email}
+          Created By: {article.user.nama_depan} {article.user.nama_belakang}
         </p>
         <h1 className="text-3xl font-bold text-[#0D4883] mt-2 mb-4">
           {article.title}
@@ -59,7 +58,8 @@ const ArticleDetail = () => {
 
         <div
           className="leading-relaxed text-gray-700"
-          dangerouslySetInnerHTML={{ __html: article.content }}></div>
+          dangerouslySetInnerHTML={{ __html: article.content }}
+        ></div>
       </div>
       <div className=" md:mt-0 p-5 md:p-[40px]">
         <FooterComponent />
