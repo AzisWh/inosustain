@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
-import { FooterComponent } from '../../components/Footer/FooterComponents';
-import ApiArticle from '../../components/TESAPI/ApiArticle';
-import { articleService } from '../../api/articleServies';
-import { ArticleType } from '../../type/article';
-import Image from '../../assets/images/PAT.png';
+import { useState, useEffect } from "react";
+import { NavbarComponents } from "../../components/Navbar/NavbarComponents";
+import { FooterComponent } from "../../components/Footer/FooterComponents";
+import ApiArticle from "../../components/TESAPI/ApiArticle";
+import { articleService } from "../../api/articleServies";
+import { ArticleType } from "../../type/article";
+import Image from "../../assets/images/PAT.png";
 
 const AllArticle = () => {
   const [articles, setArticles] = useState<ArticleType[]>([]);
@@ -13,13 +13,13 @@ const AllArticle = () => {
       try {
         const response = await articleService.getAllArticles();
         const approvedArticles = response.artikels.filter(
-          (artikel) => artikel.verifikasi_admin === 'disetujui'
+          (artikel) => artikel.verifikasi_admin === "disetujui"
         );
 
         setArticles(approvedArticles);
         // console.log(approvedArticles);
       } catch (error) {
-        console.error('Gagal mengambil data artikel:', error);
+        console.error("Gagal mengambil data artikel:", error);
       }
     };
 
@@ -43,7 +43,8 @@ const AllArticle = () => {
           <div className="pt-10">
             <h1
               className="md:text-[60px] text-[40px] font-semibold md:py-5 text-[#0D4883] text-center"
-              style={{ fontFamily: 'Arlonbold' }}>
+              style={{ fontFamily: "Arlonbold" }}
+            >
               Article
             </h1>
           </div>
@@ -62,7 +63,7 @@ const AllArticle = () => {
                   title={item.title}
                   descrip={item.content}
                   penulis={`${item.user.nama_depan} ${item.user.nama_belakang}`}
-                  email={item.user.email}
+                  // email={item.user.email}
                 />
               ))}
             </div>

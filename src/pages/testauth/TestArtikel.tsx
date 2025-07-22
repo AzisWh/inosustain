@@ -28,12 +28,12 @@ const TestArtikel = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-10">Loading artikel...</p>;
+    return <p className="mt-10 text-center">Loading artikel...</p>;
   }
 
   if (articles.length === 0) {
     return (
-      <div className="text-center mt-10 text-gray-500">
+      <div className="mt-10 text-center text-gray-500">
         Belum ada artikel yang tersedia.
       </div>
     );
@@ -52,7 +52,7 @@ const TestArtikel = () => {
             title={item.title}
             descrip={item.content}
             penulis={`${item.user.nama_depan} ${item.user.nama_belakang}`}
-            email={item.user.email}
+            // email={item.user.email}
           />
         ))}
       </div>
