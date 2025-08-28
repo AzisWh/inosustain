@@ -82,7 +82,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   useEffect(() => {
     if (user && Number(user.role_type) !== requiredRole) {
       toast.error("Anda tidak memiliki akses ke halaman ini.");
-      navigate("/login", { replace: true });
+      navigate("/", { replace: true });
     }
   }, [user, requiredRole, navigate]);
 

@@ -1,13 +1,13 @@
-import Layout from '../../layout/Layout';
-import { useState, useEffect } from 'react';
-import Image from '../../../../assets/images/PAT.png';
-import { articleService } from '../../../../api/articleServies';
-import { ArticleType, PostArticleAdminPayload } from '../../../../type/article';
-import ArticleCardDashboard from '../../components/ArticleCard/ArticleCard';
-import { Modal, ModalBody, ModalFooter, ModalHeader } from 'flowbite-react';
-import toast from 'react-hot-toast';
-import { Button } from '../../../../components/Button/Button';
-import { useNavigate } from 'react-router-dom';
+import Layout from "../../layout/Layout";
+import { useState, useEffect } from "react";
+import Image from "../../../../assets/images/PAT.png";
+import { articleService } from "../../../../api/articleServies";
+import { ArticleType, PostArticleAdminPayload } from "../../../../type/article";
+import ArticleCardDashboard from "../../components/ArticleCard/ArticleCard";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-react";
+import toast from "react-hot-toast";
+import { Button } from "../../../../components/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const ArticleAdmin = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const ArticleAdmin = () => {
         setArticles(response.artikels);
         // console.log(response.artikels);
       } catch (error) {
-        console.error('Gagal mengambil data artikel:', error);
+        console.error("Gagal mengambil data artikel:", error);
       }
     };
 
@@ -30,10 +30,10 @@ const ArticleAdmin = () => {
   const [showModal, setShowModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<PostArticleAdminPayload>({
-    title: '',
-    content: '',
+    title: "",
+    content: "",
     image: null,
-    verifikasi_admin: 'menunggu' as const,
+    verifikasi_admin: "menunggu" as const,
   });
 
   const handleChange = (
@@ -56,17 +56,17 @@ const ArticleAdmin = () => {
       const res = await articleService.postArticleAdmin(formData);
       toast.success(res.message);
       setFormData({
-        title: '',
-        content: '',
+        title: "",
+        content: "",
         image: null,
-        verifikasi_admin: 'menunggu',
+        verifikasi_admin: "menunggu",
       });
       setShowModal(false);
       window.location.reload();
-      toast.success('Berhasil membuat artikel!');
+      toast.success("Berhasil membuat artikel!");
     } catch (err: any) {
       const msg =
-        err?.response?.data?.message || 'Terjadi kesalahan saat posting.';
+        err?.response?.data?.message || "Terjadi kesalahan saat posting.";
       toast.error(msg);
     } finally {
       setIsSubmitting(false);
@@ -81,12 +81,12 @@ const ArticleAdmin = () => {
 
     try {
       await articleService.deleteArticle(articleToDelete);
-      toast.success('Blog berhasil dihapus');
+      toast.success("Blog berhasil dihapus");
       setArticles((prev) => prev.filter((item) => item.id !== articleToDelete));
     } catch (err: any) {
       const msg =
         err?.response?.data?.message ||
-        'Terjadi kesalahan saat menghapus blog.';
+        "Terjadi kesalahan saat menghapus blog.";
       toast.error(msg);
     } finally {
       setShowDeleteModal(false);
@@ -108,14 +108,16 @@ const ArticleAdmin = () => {
               <div className="flex items-center justify-between px-4 py-4 md:px-10">
                 <h1
                   className="md:text-[60px] text-[40px] font-semibold text-[#0D4883]"
-                  style={{ fontFamily: 'Arlonbold' }}>
+                  style={{ fontFamily: "Arlonbold" }}
+                >
                   List Article
                 </h1>
                 <button
                   onClick={() => {
                     setShowModal(true);
                   }}
-                  className="px-4 py-2 text-white bg-[#0D4883] rounded hover:bg-blue-700">
+                  className="px-4 py-2 text-white bg-[#0D4883] rounded hover:bg-blue-700"
+                >
                   Tambah Article
                 </button>
               </div>
@@ -128,7 +130,7 @@ const ArticleAdmin = () => {
                         image={
                           item.image
                             ? // ? `http://127.0.0.1:8000/storage/${item.image}`
-                              `http://api-serviceinosustain.com/storage/${item.image}`
+                              `https://api-serviceinosustain.com/storage/${item.image}`
                             : Image
                         }
                         title={item.title}
@@ -143,12 +145,14 @@ const ArticleAdmin = () => {
                             setArticleToDelete(item.id);
                             setShowDeleteModal(true);
                           }}
-                          className="px-3 py-1 text-sm text-white bg-red-600 rounded hover:bg-red-700">
+                          className="px-3 py-1 text-sm text-white bg-red-600 rounded hover:bg-red-700"
+                        >
                           hapus
                         </button>
                         <button
                           onClick={() => navigate(`/edit-Artikel/${item.id}`)}
-                          className="px-3 py-1 text-sm text-white bg-blue-600 rounded hover:bg-blue-700">
+                          className="px-3 py-1 text-sm text-white bg-blue-600 rounded hover:bg-blue-700"
+                        >
                           Edit Artikel
                         </button>
                       </div>
@@ -208,12 +212,13 @@ const ArticleAdmin = () => {
                   setFormData({
                     ...formData,
                     verifikasi_admin: e.target.value as
-                      | 'menunggu'
-                      | 'disetujui'
-                      | 'ditolak',
+                      | "menunggu"
+                      | "disetujui"
+                      | "ditolak",
                   })
                 }
-                className="w-full p-2 border rounded">
+                className="w-full p-2 border rounded"
+              >
                 <option value="menunggu">Menunggu</option>
                 <option value="disetujui">Disetujui</option>
                 <option value="ditolak">Ditolak</option>
@@ -226,10 +231,11 @@ const ArticleAdmin = () => {
             type="button"
             disabled={isSubmitting}
             className={`px-6 py-3 md:text-[14px] text-sm font-medium rounded-full duration-300 ${
-              isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             } bg-blue-600 text-white hover:bg-blue-700`}
-            onClick={handleAdd}>
-            {isSubmitting ? 'Menyimpan...' : 'Simpan'}
+            onClick={handleAdd}
+          >
+            {isSubmitting ? "Menyimpan..." : "Simpan"}
           </button>
           <Button
             type="button"
@@ -249,7 +255,8 @@ const ArticleAdmin = () => {
         <ModalFooter>
           <button
             className="px-6 py-2 text-white bg-red-600 rounded hover:bg-red-700"
-            onClick={handleDelete}>
+            onClick={handleDelete}
+          >
             Ya, Hapus
           </button>
           <Button
