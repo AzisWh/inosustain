@@ -31,7 +31,7 @@ const ApiArticle: React.FC<ArticleItem> = ({
         <img
           src={image}
           alt="Blog Image"
-          className="mt-4 w-[342px] h-[256px] object-contain"
+          className="mt-4 w-[342px] h-[256px] object-contain mx-auto"
         />
         <p className="mt-2 text-sm text-gray-500">Created By : {penulis}</p>
         <h5
