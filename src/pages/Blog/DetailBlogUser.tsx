@@ -76,7 +76,7 @@ const DetailBlogUser = () => {
             </div>
 
             <div
-              className="leading-relaxed text-gray-700"
+              className="mt-10 leading-relaxed text-gray-700"
               dangerouslySetInnerHTML={{ __html: blog.content }}
             ></div>
           </div>
