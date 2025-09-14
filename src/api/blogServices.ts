@@ -1,5 +1,5 @@
 import axiosInstance from './axiosInterceptor';
-import { BlogResponse, BlogListResponse, PostBlogPayload } from '../type/blog';
+import { BlogResponse, BlogListResponse, PostBlogPayload, AddBlogImageResponse, BlogImageResponse } from '../type/blog';
 
 export const blogService = {
   async getAllBlog(): Promise<BlogListResponse> {
@@ -45,4 +45,24 @@ export const blogService = {
     const response = await axiosInstance.delete(`/deleteBlog/${id}`);
     return response.data;
   },
+
+  async addBlogImage(blogId: number, images: File[]): Promise<AddBlogImageResponse> {
+    const formData = new FormData();
+    images.forEach((file) => {
+      formData.append("images[]", file);
+    });
+
+    const response = await axiosInstance.post(`/addImageBlog/${blogId}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    return response.data;
+  },
+
+  async getBlogImages(blogId: number): Promise<BlogImageResponse> {
+    const response = await axiosInstance.get(`/getBlogImages/${blogId}`);
+    return response.data;
+  }
 };

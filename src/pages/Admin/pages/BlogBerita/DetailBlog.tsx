@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
-import Layout from '../../layout/Layout';
-import { useEffect, useState } from 'react';
-import { BlogType } from '../../../../type/blog';
-import { blogService } from '../../../../api/blogServices';
-import Image from '../../../../assets/images/PAT.png';
+import { useParams } from "react-router-dom";
+import Layout from "../../layout/Layout";
+import { useEffect, useState } from "react";
+import { BlogType } from "../../../../type/blog";
+import { blogService } from "../../../../api/blogServices";
+import Image from "../../../../assets/images/PAT.png";
 const DetailBlog = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState<BlogType | null>(null);
@@ -17,7 +17,7 @@ const DetailBlog = () => {
           setBlog(res.blog);
         }
       } catch (error) {
-        console.error('Gagal mengambil detail artikel:', error);
+        console.error("Gagal mengambil detail artikel:", error);
       } finally {
         setLoading(false);
       }
@@ -46,7 +46,8 @@ const DetailBlog = () => {
 
         <div
           className="leading-relaxed text-gray-700"
-          dangerouslySetInnerHTML={{ __html: blog.content }}></div>
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        ></div>
       </div>
     </Layout>
   );

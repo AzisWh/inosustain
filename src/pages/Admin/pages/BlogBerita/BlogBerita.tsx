@@ -1,12 +1,12 @@
-import Layout from '../../layout/Layout';
-import { useState, useEffect } from 'react';
-import Image from '../../../../assets/images/PAT.png';
-import { blogService } from '../../../../api/blogServices';
-import { BlogType, PostBlogPayload } from '../../../../type/blog';
-import BlogCard from '../../components/BlogCard/BlogCard';
-import { Modal, ModalBody, ModalFooter, ModalHeader } from 'flowbite-react';
-import { Button } from '../../../../components/Button/Button';
-import toast from 'react-hot-toast';
+import Layout from "../../layout/Layout";
+import { useState, useEffect } from "react";
+import Image from "../../../../assets/images/PAT.png";
+import { blogService } from "../../../../api/blogServices";
+import { BlogType, PostBlogPayload } from "../../../../type/blog";
+import BlogCard from "../../components/BlogCard/BlogCard";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-react";
+import { Button } from "../../../../components/Button/Button";
+import toast from "react-hot-toast";
 
 const BlogBerita = () => {
   const [blog, setBlog] = useState<BlogType[]>([]);
@@ -16,7 +16,7 @@ const BlogBerita = () => {
         const response = await blogService.getAllBlog();
         setBlog(response.blog);
       } catch (error) {
-        console.log('gagal memuat blog:', error);
+        console.log("gagal memuat blog:", error);
       }
     };
 
@@ -26,8 +26,8 @@ const BlogBerita = () => {
   const [showModal, setShowModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<PostBlogPayload>({
-    title: '',
-    content: '',
+    title: "",
+    content: "",
     image: null,
   });
 
@@ -50,13 +50,13 @@ const BlogBerita = () => {
       setIsSubmitting(true);
       const res = await blogService.postBlog(formData);
       toast.success(res.message);
-      setFormData({ title: '', content: '', image: null });
+      setFormData({ title: "", content: "", image: null });
       setShowModal(false);
       window.location.reload();
-      toast.success('Berhasil membuat blog!');
+      toast.success("Berhasil membuat blog!");
     } catch (err: any) {
       const msg =
-        err?.response?.data?.message || 'Terjadi kesalahan saat posting.';
+        err?.response?.data?.message || "Terjadi kesalahan saat posting.";
       toast.error(msg);
     } finally {
       setIsSubmitting(false);
@@ -71,12 +71,12 @@ const BlogBerita = () => {
 
     try {
       await blogService.deleteBlog(blogToDelete);
-      toast.success('Blog berhasil dihapus');
+      toast.success("Blog berhasil dihapus");
       setBlog((prev) => prev.filter((item) => item.id !== blogToDelete));
     } catch (err: any) {
       const msg =
         err?.response?.data?.message ||
-        'Terjadi kesalahan saat menghapus blog.';
+        "Terjadi kesalahan saat menghapus blog.";
       toast.error(msg);
     } finally {
       setShowDeleteModal(false);
@@ -96,14 +96,16 @@ const BlogBerita = () => {
             <div className="flex items-center justify-between px-4 py-4 md:px-10">
               <h1
                 className="md:text-[60px] text-[40px] font-semibold text-[#0D4883]"
-                style={{ fontFamily: 'Arlonbold' }}>
+                style={{ fontFamily: "Arlonbold" }}
+              >
                 List Blog
               </h1>
               <button
                 onClick={() => {
                   setShowModal(true);
                 }}
-                className="px-4 py-2 text-white bg-[#0D4883] rounded hover:bg-blue-700">
+                className="px-4 py-2 text-white bg-[#0D4883] rounded hover:bg-blue-700"
+              >
                 Tambah Blog
               </button>
             </div>
@@ -115,9 +117,9 @@ const BlogBerita = () => {
                       id={item.id}
                       image={
                         item.image
-                          ? // ? `http://127.0.0.1:8000/storage/${item.image}`
-                            `http://api-serviceinosustain.com/storage/${item.image}`
-                          : Image
+                          ? `http://127.0.0.1:8000/storage/${item.image}`
+                          : // `http://api-serviceinosustain.com/storage/${item.image}`
+                            Image
                       }
                       title={item.title}
                       status={item.status}
@@ -128,7 +130,8 @@ const BlogBerita = () => {
                         setBlogToDelete(item.id);
                         setShowDeleteModal(true);
                       }}
-                      className="absolute px-3 py-1 text-sm text-white bg-red-600 rounded top-2 right-2 hover:bg-red-700">
+                      className="absolute px-3 py-1 text-sm text-white bg-red-600 rounded top-2 right-2 hover:bg-red-700"
+                    >
                       Hapus
                     </button>
                   </div>
@@ -182,10 +185,11 @@ const BlogBerita = () => {
             type="button"
             disabled={isSubmitting}
             className={`px-6 py-3 md:text-[14px] text-sm font-medium rounded-full duration-300 ${
-              isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             } bg-blue-600 text-white hover:bg-blue-700`}
-            onClick={handleAdd}>
-            {isSubmitting ? 'Menyimpan...' : 'Simpan'}
+            onClick={handleAdd}
+          >
+            {isSubmitting ? "Menyimpan..." : "Simpan"}
           </button>
           <Button
             type="button"
@@ -205,7 +209,8 @@ const BlogBerita = () => {
         <ModalFooter>
           <button
             className="px-6 py-2 text-white bg-red-600 rounded hover:bg-red-700"
-            onClick={handleDelete}>
+            onClick={handleDelete}
+          >
             Ya, Hapus
           </button>
           <Button

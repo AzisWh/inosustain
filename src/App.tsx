@@ -1,41 +1,42 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import LoadingWrapper from './components/Loading/LoadingWrapper';
-import Home from './pages/Home/Home';
-import About from './pages/About/About';
-import Services from './pages/Services/Services';
-import ContactUs from './pages/Contact/ContactUs';
-import Register from './pages/Auth/Register/Register';
-import Login from './pages/Auth/Login/Login';
-import PrivateRoute from './PrivateRoute';
-import { Toaster } from 'react-hot-toast';
-import AllArticle from './pages/Article/AllArticle';
-import ArticleDetail from './pages/ArticleDetail/ArticleDetail';
-import PostArticle from './pages/Article/PostArticle';
-import ForgotPassword from './pages/Auth/ForgotPassword/ForgotPassword';
-import ResetPassword from './pages/Auth/ResetPassword/ResetPassword';
-import UserArticle from './pages/Article/UserArticle';
-import AllBlog from './pages/Blog/AllBlog';
-import DetailBlogUser from './pages/Blog/DetailBlogUser';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import LoadingWrapper from "./components/Loading/LoadingWrapper";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Services from "./pages/Services/Services";
+import ContactUs from "./pages/Contact/ContactUs";
+import Register from "./pages/Auth/Register/Register";
+import Login from "./pages/Auth/Login/Login";
+import PrivateRoute from "./PrivateRoute";
+import { Toaster } from "react-hot-toast";
+import AllArticle from "./pages/Article/AllArticle";
+import ArticleDetail from "./pages/ArticleDetail/ArticleDetail";
+import PostArticle from "./pages/Article/PostArticle";
+import ForgotPassword from "./pages/Auth/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword/ResetPassword";
+import UserArticle from "./pages/Article/UserArticle";
+import AllBlog from "./pages/Blog/AllBlog";
+import DetailBlogUser from "./pages/Blog/DetailBlogUser";
 // admin
-import { Dashboard } from './pages/Admin/pages/dashboard/Dashboard';
-import ArticleAdmin from './pages/Admin/pages/ArticleAdmin/ArticleAdmin';
-import UpdateArticle from './pages/Admin/pages/ArticleAdmin/UpdateArticle';
-import StatusUpdateArticle from './pages/Admin/pages/UpdateArticle/StatusUpdateArticle';
-import BlogBerita from './pages/Admin/pages/BlogBerita/BlogBerita';
-import DetailBlog from './pages/Admin/pages/BlogBerita/DetailBlog';
-import EditBlog from './pages/Admin/pages/BlogBerita/EditBlog';
-import EditArticle from './pages/Admin/pages/ArticleAdmin/EditArticle';
-import BukuAdmin from './pages/Admin/pages/Buku/BukuAdmin';
-import BukuDetail from './pages/Admin/pages/Buku/BukuDetail';
+import { Dashboard } from "./pages/Admin/pages/dashboard/Dashboard";
+import ArticleAdmin from "./pages/Admin/pages/ArticleAdmin/ArticleAdmin";
+import UpdateArticle from "./pages/Admin/pages/ArticleAdmin/UpdateArticle";
+import StatusUpdateArticle from "./pages/Admin/pages/UpdateArticle/StatusUpdateArticle";
+import BlogBerita from "./pages/Admin/pages/BlogBerita/BlogBerita";
+import DetailBlog from "./pages/Admin/pages/BlogBerita/DetailBlog";
+import EditBlog from "./pages/Admin/pages/BlogBerita/EditBlog";
+import EditArticle from "./pages/Admin/pages/ArticleAdmin/EditArticle";
+import BukuAdmin from "./pages/Admin/pages/Buku/BukuAdmin";
+import BukuDetail from "./pages/Admin/pages/Buku/BukuDetail";
+import ImageBlog from "./pages/Admin/pages/BlogBerita/ImageBlog";
 
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { setNavigateToLogin } from './api/axiosInterceptor';
-import { useDispatch } from 'react-redux';
-import { authService } from './api/authServices';
-import { logout, setToken } from './redux/auth/authSlice';
-import { jwtDecode } from 'jwt-decode';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { setNavigateToLogin } from "./api/axiosInterceptor";
+import { useDispatch } from "react-redux";
+import { authService } from "./api/authServices";
+import { logout, setToken } from "./redux/auth/authSlice";
+import { jwtDecode } from "jwt-decode";
 
 interface JwtPayload {
   exp: number;
@@ -49,7 +50,7 @@ const isTokenExpired = (token: string | null): boolean => {
     const currentTime = Date.now() / 1000;
     return decoded.exp < currentTime;
   } catch (error) {
-    console.error('Error decoding token:', error);
+    console.error("Error decoding token:", error);
     return true;
   }
 };
@@ -59,18 +60,18 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setNavigateToLogin(() => () => navigate('/login'));
+    setNavigateToLogin(() => () => navigate("/login"));
 
-    const storedToken = localStorage.getItem('token');
+    const storedToken = localStorage.getItem("token");
     if (storedToken) {
       if (isTokenExpired(storedToken)) {
-        console.log('Token kadaluarsa saat aplikasi dimuat');
+        console.log("Token kadaluarsa saat aplikasi dimuat");
         authService.logout().catch((error) => {
-          console.error('Gagal logout, melanjutkan logout lokal:', error);
+          console.error("Gagal logout, melanjutkan logout lokal:", error);
         });
-        localStorage.removeItem('token');
+        localStorage.removeItem("token");
         dispatch(logout());
-        navigate('/');
+        navigate("/");
       } else {
         dispatch(setToken(storedToken));
       }
@@ -86,23 +87,23 @@ function App() {
       lastActivity = Date.now();
     };
 
-    const events = ['mousemove', 'keydown', 'click', 'scroll'];
+    const events = ["mousemove", "keydown", "click", "scroll"];
     events.forEach((event) => window.addEventListener(event, resetTimer));
 
     const checkIdle = async () => {
       const currentTime = Date.now();
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (token && currentTime - lastActivity > timeoutMs) {
-        console.log('Pengguna idle terlalu lama, logout...');
+        console.log("Pengguna idle terlalu lama, logout...");
         try {
           await authService.logout();
-          console.log('Logout berhasil');
+          console.log("Logout berhasil");
         } catch (logoutError) {
-          console.error('Gagal logout, melanjutkan logout lokal:', logoutError);
+          console.error("Gagal logout, melanjutkan logout lokal:", logoutError);
         }
-        localStorage.removeItem('token');
+        localStorage.removeItem("token");
         dispatch(logout());
-        navigate('/');
+        navigate("/");
       }
     };
 
@@ -160,6 +161,10 @@ function App() {
           <Route
             path="/detailBlog/:id"
             element={<PrivateRoute component={DetailBlog} requiredRole={2} />}
+          />
+          <Route
+            path="/imageBlog/:id"
+            element={<PrivateRoute component={ImageBlog} requiredRole={2} />}
           />
           <Route
             path="/editBlog/:id"

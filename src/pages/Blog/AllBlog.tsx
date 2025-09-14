@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { NavbarComponents } from '../../components/Navbar/NavbarComponents';
-import { FooterComponent } from '../../components/Footer/FooterComponents';
-import BlogCardUser from '../../components/BlogCard/BlogCardUser';
-import { blogService } from '../../api/blogServices';
-import { BlogType } from '../../type/blog';
-import Image from '../../assets/images/PAT.png';
+import { useState, useEffect } from "react";
+import { NavbarComponents } from "../../components/Navbar/NavbarComponents";
+import { FooterComponent } from "../../components/Footer/FooterComponents";
+import BlogCardUser from "../../components/BlogCard/BlogCardUser";
+import { blogService } from "../../api/blogServices";
+import { BlogType } from "../../type/blog";
+import Image from "../../assets/images/PAT.png";
 
 const AllBlog = () => {
   const [blog, setBlog] = useState<BlogType[]>([]);
@@ -13,11 +13,11 @@ const AllBlog = () => {
       try {
         const response = await blogService.getAllBlog();
         const statusBlog = response.blog.filter(
-          (blog) => blog.status === 'onpost'
+          (blog) => blog.status === "onpost"
         );
         setBlog(statusBlog);
       } catch (error) {
-        console.error('Gagal mengambil:', error);
+        console.error("Gagal mengambil:", error);
       }
     };
     fetchData();
@@ -34,7 +34,8 @@ const AllBlog = () => {
           <div className="pt-10">
             <h1
               className="md:text-[60px] text-[40px] font-semibold md:py-5 text-[#0D4883] text-center"
-              style={{ fontFamily: 'Arlonbold' }}>
+              style={{ fontFamily: "Arlonbold" }}
+            >
               Blog
             </h1>
           </div>
@@ -52,9 +53,9 @@ const AllBlog = () => {
                     id={item.id}
                     image={
                       item.image
-                      ? // ? `http://127.0.0.1:8000/storage/${item.image}`
-                        `https://api-serviceinosustain.com/storage/${item.image}`
-                      : Image
+                        ? `http://127.0.0.1:8000/storage/${item.image}`
+                        : // `https://api-serviceinosustain.com/storage/${item.image}`
+                          Image
                     }
                     title={item.title}
                     content={item.content}
