@@ -44,9 +44,9 @@ const DetailBlogUser = () => {
             <img
               src={
                 blog.image
-                  ? `http://127.0.0.1:8000/storage/${blog.image}`
-                  : // `https://api-serviceinosustain.com/storage/${blog.image}`
-                    "/default-image.jpg"
+                  ? //  `http://127.0.0.1:8000/storage/${blog.image}`
+                    `https://api-serviceinosustain.com/storage/${blog.image}`
+                  : "/default-image.jpg"
               }
               alt={blog.title}
               className="w-full h-auto max-h-[400px] object-cover mb-4 rounded-xl mx-auto"

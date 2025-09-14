@@ -35,7 +35,10 @@ const DetailBlog = () => {
       <div className="max-w-4xl p-6 mx-auto mt-10">
         <img
           src={
-            blog.image ? `http://127.0.0.1:8000/storage/${blog.image}` : Image
+            blog.image
+              ? //  `http://127.0.0.1:8000/storage/${blog.image}`
+                `https://api-serviceinosustain.com/storage/${blog.image}`
+              : Image
           }
           alt={blog.title}
           className="w-full h-[300px] object-contain mb-4"
