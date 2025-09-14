@@ -63,7 +63,8 @@ const ImageBlog = () => {
           images.map((img) => (
             <div key={img.id} className="p-2 border rounded">
               <img
-                src={`http://localhost:8000/storage/${img.image}`}
+                // src={`http://localhost:8000/storage/${img.image}`}
+                src={`https://api-serviceinosustain.com/storage/${img.image}`}
                 alt={`Blog ${img.id}`}
                 className="object-cover w-full h-40 rounded"
               />

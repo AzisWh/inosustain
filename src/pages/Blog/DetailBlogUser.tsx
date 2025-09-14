@@ -17,7 +17,7 @@ const DetailBlogUser = () => {
           const res = await blogService.getBlogById(Number(id));
           // setBlog(res.blog);
           setBlog({ ...res.blog, images: res.blog.images ?? [] });
-          console.log(res.blog);
+          // console.log(res.blog);
         }
       } catch (error) {
         console.error("Gagal mengambil detail artikel:", error);
@@ -59,9 +59,9 @@ const DetailBlogUser = () => {
                       key={img.id}
                       src={
                         img.image
-                          ? `http://127.0.0.1:8000/storage/${img.image}`
-                          : // `https://api-serviceinosustain.com/storage/${img.image}`
-                            "/default-image.jpg"
+                          ? // ? `http://127.0.0.1:8000/storage/${img.image}`
+                            `https://api-serviceinosustain.com/storage/${img.image}`
+                          : "/default-image.jpg"
                       }
                       alt={`Blog image ${img.id}`}
                       className="object-cover w-full h-40 rounded-lg"

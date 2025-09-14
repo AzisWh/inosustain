@@ -14,7 +14,7 @@ const DetailBlog = () => {
       try {
         if (id) {
           const res = await blogService.getBlogById(Number(id));
-          setBlog(res.blog);
+          setBlog({ ...res.blog, images: res.blog.images ?? [] });
         }
       } catch (error) {
         console.error("Gagal mengambil detail artikel:", error);
@@ -43,6 +43,30 @@ const DetailBlog = () => {
         <h1 className="text-3xl font-bold text-[#0D4883] mt-2 mb-4">
           {blog.title}
         </h1>
+
+        <div className="mt-6">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+            {blog.images.length > 0 ? (
+              blog.images.map((img: any) => (
+                <img
+                  key={img.id}
+                  src={
+                    img.image
+                      ? // ? `http://127.0.0.1:8000/storage/${img.image}`
+                        `https://api-serviceinosustain.com/storage/${img.image}`
+                      : "/default-image.jpg"
+                  }
+                  alt={`Blog image ${img.id}`}
+                  className="object-cover w-full h-40 rounded-lg"
+                />
+              ))
+            ) : (
+              <span className="col-span-4 text-center text-gray-400">
+                Tidak ada gambar tambahan
+              </span>
+            )}
+          </div>
+        </div>
 
         <div
           className="leading-relaxed text-gray-700"
