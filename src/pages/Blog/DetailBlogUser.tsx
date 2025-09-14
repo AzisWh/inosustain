@@ -75,9 +75,10 @@ const DetailBlogUser = () => {
               </div>
             </div>
 
-            <p className="text-justify text-gray-700 whitespace-pre-line">
-              {blog.content}
-            </p>
+            <div
+              className="leading-relaxed text-gray-700"
+              dangerouslySetInnerHTML={{ __html: blog.content }}
+            ></div>
           </div>
         )}
       </div>
