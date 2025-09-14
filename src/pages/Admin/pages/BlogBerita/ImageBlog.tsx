@@ -75,16 +75,26 @@ const ImageBlog = () => {
       </div>
       <h2 className="mb-2 font-semibold">Tambah Image Baru (max 5):</h2>
       <div className="space-y-3">
-        {newImages.map((_, index) => (
-          <input
-            key={index}
-            type="file"
-            accept="image/*"
-            onChange={(e) =>
-              e.target.files?.[0] && handleFileChange(e.target.files[0], index)
-            }
-            className="block w-full"
-          />
+        {newImages.map((file, index) => (
+          <div key={index} className="flex items-center gap-4">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) =>
+                e.target.files?.[0] &&
+                handleFileChange(e.target.files[0], index)
+              }
+              className="block w-full"
+            />
+            {/* Preview */}
+            {file && file.size > 0 && (
+              <img
+                src={URL.createObjectURL(file)}
+                alt={`preview-${index}`}
+                className="object-cover w-20 h-20 border rounded"
+              />
+            )}
+          </div>
         ))}
       </div>
 
@@ -103,6 +113,10 @@ const ImageBlog = () => {
           Simpan
         </button>
       </div>
+
+      {/* <div>
+        <EditorComponent />
+      </div> */}
     </Layout>
   );
 };

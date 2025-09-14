@@ -6,23 +6,23 @@ interface BlogItem {
   id: number;
   image: string;
   title: string;
-  content: string;
+  // content: string;
   status: "onhold" | "onpost";
 }
 const BlogCard: React.FC<BlogItem> = ({
   id,
   image,
   title,
-  content,
+  // content,
   status,
 }) => {
-  const stripHtml = (html: string) => {
-    return html.replace(/<[^>]+>/g, "");
-  };
+  // const stripHtml = (html: string) => {
+  //   return html.replace(/<[^>]+>/g, "");
+  // };
 
-  const plainText = stripHtml(content);
-  const shortDesc =
-    plainText.length > 100 ? plainText.slice(0, 100) + "..." : plainText;
+  // const plainText = stripHtml(content);
+  // const shortDesc =
+  //   plainText.length > 100 ? plainText.slice(0, 100) + "..." : plainText;
 
   return (
     <>
@@ -46,9 +46,9 @@ const BlogCard: React.FC<BlogItem> = ({
           >
             {title}
           </h5>
-          <span className="flex-grow mt-2 text-sm text-gray-600">
+          {/* <span className="flex-grow mt-2 text-sm text-gray-600">
             {shortDesc}
-          </span>
+          </span> */}
         </div>
 
         <div className="flex flex-col items-center justify-center gap-4">

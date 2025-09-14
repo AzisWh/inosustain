@@ -52,13 +52,17 @@ const DetailBlogUser = () => {
               className="w-full h-auto max-h-[400px] object-cover mb-4 rounded-xl mx-auto"
             />
             <div className="mt-6">
-              <h2 className="mb-2 text-lg font-semibold">Gambar Tambahan</h2>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-                {blog.images.length   > 0 ? (
+                {blog.images.length > 0 ? (
                   blog.images.map((img: any) => (
                     <img
                       key={img.id}
-                      src={`http://127.0.0.1:8000/storage/${img.image}`}
+                      src={
+                        img.image
+                          ? `http://127.0.0.1:8000/storage/${img.image}`
+                          : // `https://api-serviceinosustain.com/storage/${img.image}`
+                            "/default-image.jpg"
+                      }
                       alt={`Blog image ${img.id}`}
                       className="object-cover w-full h-40 rounded-lg"
                     />

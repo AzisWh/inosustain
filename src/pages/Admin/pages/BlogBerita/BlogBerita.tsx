@@ -6,6 +6,7 @@ import { BlogType, PostBlogPayload } from "../../../../type/blog";
 import BlogCard from "../../components/BlogCard/BlogCard";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-react";
 import { Button } from "../../../../components/Button/Button";
+import EditorComponent from "../../components/EditorComponent/EditorComponent";
 import toast from "react-hot-toast";
 
 const BlogBerita = () => {
@@ -123,7 +124,7 @@ const BlogBerita = () => {
                       }
                       title={item.title}
                       status={item.status}
-                      content={item.content}
+                      // content={item.content}
                     />
                     <button
                       onClick={() => {
@@ -169,13 +170,9 @@ const BlogBerita = () => {
             </div>
             <div>
               <label className="block mb-1 font-semibold">Konten</label>
-              <textarea
-                className="w-full px-3 py-2 border rounded"
-                name="content"
-                rows={6}
+              <EditorComponent
                 value={formData.content}
-                onChange={handleChange}
-                required
+                onChange={(val) => setFormData({ ...formData, content: val })}
               />
             </div>
           </div>

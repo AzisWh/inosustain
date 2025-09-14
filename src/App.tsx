@@ -60,7 +60,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setNavigateToLogin(() => () => navigate("/login"));
+    setNavigateToLogin(() => () => navigate("/"));
 
     const storedToken = localStorage.getItem("token");
     if (storedToken) {

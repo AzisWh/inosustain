@@ -4,6 +4,7 @@ import { blogService } from "../../../../api/blogServices";
 import toast from "react-hot-toast";
 import { BlogResponse } from "../../../../type/blog";
 import Layout from "../../layout/Layout";
+import EditorComponent from "../../components/EditorComponent/EditorComponent";
 
 const EditBlog = () => {
   const { id } = useParams();
@@ -95,12 +96,13 @@ const EditBlog = () => {
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
           />
-          <textarea
-            className="w-full p-2 mb-2 border"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="Content"
-          />
+          <div>
+            <label className="block mb-1 font-semibold">Konten</label>
+            <EditorComponent
+              value={content}
+              onChange={(newContent) => setContent(newContent)}
+            />
+          </div>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value as "onhold" | "onpost")}

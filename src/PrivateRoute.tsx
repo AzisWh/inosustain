@@ -44,7 +44,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
       if (!token) {
         toast.error("Silakan login terlebih dahulu.");
         dispatch(logout());
-        navigate("/login", { replace: true });
+        navigate("/", { replace: true });
         return;
       }
 
@@ -59,7 +59,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
         }
         localStorage.removeItem("token");
         dispatch(logout());
-        navigate("/login", { replace: true });
+        navigate("/", { replace: true });
         return;
       }
 
@@ -71,7 +71,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
           toast.error("Sesi Anda tidak valid. Silakan login kembali.");
           localStorage.removeItem("token");
           dispatch(logout());
-          navigate("/login", { replace: true });
+          navigate("/", { replace: true });
         }
       }
     };
