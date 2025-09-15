@@ -9,6 +9,7 @@ const ImageBlog = () => {
   const { id } = useParams<{ id: string }>();
   const [images, setImages] = useState<BlogImage[]>([]);
   const [newImages, setNewImages] = useState<File[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const fetchImages = async () => {
     if (id) {
@@ -108,10 +109,11 @@ const ImageBlog = () => {
           + Add Image
         </button>
         <button
+          disabled={isSubmitting || newImages.length === 0}
           onClick={handleSubmit}
           className="px-4 py-2 text-white bg-green-600 rounded"
         >
-          Simpan
+          {isSubmitting ? "Menyimpan..." : "Simpan"}
         </button>
       </div>
 
