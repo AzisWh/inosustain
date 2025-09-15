@@ -61,6 +61,11 @@ export const blogService = {
     return response.data;
   },
 
+  async deleteBlogImage(id: number): Promise<{ message: string }> {
+    const response = await axiosInstance.delete(`/deleteImageBlog/${id}`);
+    return response.data;
+  },
+
   async getBlogImages(blogId: number): Promise<BlogImageResponse> {
     const response = await axiosInstance.get(`/getBlogImages/${blogId}`);
     return response.data;
