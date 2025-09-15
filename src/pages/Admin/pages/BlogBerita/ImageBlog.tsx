@@ -41,7 +41,7 @@ const ImageBlog = () => {
 
   const handleSubmit = async () => {
     if (!id || newImages.length === 0) return;
-
+    setIsSubmitting(true);
     try {
       const filesToUpload = newImages.filter((f) => f.size > 0);
       if (filesToUpload.length === 0) return;
@@ -53,6 +53,8 @@ const ImageBlog = () => {
     } catch (err) {
       console.error("Failed to upload images:", err);
       toast.error("Gagal mengunggah images");
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -111,7 +113,9 @@ const ImageBlog = () => {
         <button
           disabled={isSubmitting || newImages.length === 0}
           onClick={handleSubmit}
-          className="px-4 py-2 text-white bg-green-600 rounded"
+          className={`px-6 py-3 md:text-[14px] text-sm font-medium rounded-full duration-300 ${
+            isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+          } bg-blue-600 text-white hover:bg-blue-700`}
         >
           {isSubmitting ? "Menyimpan..." : "Simpan"}
         </button>
