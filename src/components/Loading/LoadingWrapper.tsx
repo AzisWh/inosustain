@@ -1,5 +1,5 @@
-import { useState, useEffect, ReactNode } from 'react';
-import { Loading } from './Loading';
+import { useState, useEffect, ReactNode } from "react";
+import { Loading } from "./Loading";
 
 interface PageWrapperProps {
   children: ReactNode;

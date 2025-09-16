@@ -5,12 +5,15 @@ import BlogCardUser from "../../components/BlogCard/BlogCardUser";
 import { blogService } from "../../api/blogServices";
 import { BlogType } from "../../type/blog";
 import Image from "../../assets/images/PAT.png";
+import { LoadingInPage } from "../../components/Loading/LoadingInPage";
 
 const AllBlog = () => {
   const [blog, setBlog] = useState<BlogType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const response = await blogService.getAllBlog();
         const statusBlog = response.blog.filter(
           (blog) => blog.status === "onpost"
@@ -18,6 +21,8 @@ const AllBlog = () => {
         setBlog(statusBlog);
       } catch (error) {
         console.error("Gagal mengambil:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -41,7 +46,11 @@ const AllBlog = () => {
           </div>
 
           <div className="bg-[#0D4883] relative px-4 pb-10 pt-10 min-h-[300px]">
-            {blog.length === 0 ? (
+            {loading ? (
+              <div className="flex justify-center items-center h-[200px]">
+                <LoadingInPage />
+              </div>
+            ) : blog.length === 0 ? (
               <p className="text-lg text-center text-white">
                 Belum ada blog yang tersedia.
               </p>
@@ -53,7 +62,7 @@ const AllBlog = () => {
                     id={item.id}
                     image={
                       item.image
-                        ? //  `http://127.0.0.1:8000/storage/${item.image}`
+                        ? // `http://127.0.0.1:8000/storage/${item.image}`
                           `https://api-serviceinosustain.com/storage/${item.image}`
                         : Image
                     }
